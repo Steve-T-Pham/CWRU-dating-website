@@ -10,14 +10,14 @@
     </div>
     <div id="login-wrapper">
         <form class="form" action="#" th:action="@{/processForm}" method="post">
-            <input placeholder="Username" id="user-login" class="input" type="text" name="username">
-            <input placeholder="Password" id="password-login" class="input" type="password" name="username">
+            <input placeholder="Username" id="user-login" class="input" type="text" name="username" required>
+            <input placeholder="Password" id="password-login" class="input" type="password" name="username" required>
             <button class="button" type="submit">Login</button>
             <label> Don't have an account? </label>
-            <a href="register.html">
-                <button class="button">Register</button>
-             </a>
         </form>
+        <a href="register.html">
+            <button class="button">Register</button>
+         </a>
     </div>
 </body>
 </html>
