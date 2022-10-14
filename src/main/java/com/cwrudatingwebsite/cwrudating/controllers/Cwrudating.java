@@ -14,4 +14,9 @@ public class Cwrudating {
         return new ModelAndView("index");
     }
 
+    @RequestMapping("/register")
+    public ModelAndView secondPage(){
+        return new ModelAndView("register");
+    }
+
 }
