@@ -31,4 +31,9 @@ public class Cwrudating {
         return new ModelAndView("register");
     }
 
+    //renders the questionnaire page
+    @RequestMapping("/questionnaire")
+    public ModelAndView thirdPage(){
+        return new ModelAndView("questionnaire");
+    }
 }

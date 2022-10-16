@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="https//www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8">
+    <title>Questionnaire</title>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+</head>
+<body>
+    <div class="questionnaire-wrapper">
+        <form>
+            <label for="fname">First Name:</label>
+            <input type="text" name="fname"><br><br> 
+            <label for="lname">Last Name:</label>
+            <input type="text" name="lname"><br><br> 
+            <label for="major">Major:
+                <select name="major">
+                    <option value="" disabled selected>Select your major...</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Biomedical Engineering">Biomedical Engineering</option>
+                    <option value="Music">Music</option>
+                    <option value="Nursing">Nursing</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
+                    <option value="English">English</option>
+                    <option value="History">History</option>
+                </select>
+            </label><br><br>
+            <label for="age">Age:</label>
+            <input type="number" name="age" min="18"><br><br>
+
+            <label for="season">1. What is your favorite season?</label><br>
+            <input type="radio" name="season" value="Spring" id="seasonq1">
+            <label for="seasonq1">Spring</label><br>
+            <input type="radio" name="season" value="Summer" id="seasonq2">
+            <label for="seasonq2">Summer</label><br>
+            <input type="radio" name="season" value="Fall" id="seasonq3">
+            <label for="seasonq3">Fall</label><br>
+            <input type="radio" name="season" value="Winter" id="seasonq4">
+            <label for="seasonq4">Winter</label><br><br>
+
+            <label for="subject">2. What is your favorite subject?</label><br>
+            <input type="radio" name="subject" value="Math" id="subjectq1">
+            <label for="subjectq1">Math</label><br>
+            <input type="radio" name="subject" value="English" id="subjectq2">
+            <label for="subjectq2">English</label><br>
+            <input type="radio" name="subject" value="Science" id="subjectq3">
+            <label for="subjectq3">Science</label><br>
+            <input type="radio" name="subject" value="History" id="subjectq4">
+            <label for="subjectq4">History</label><br><br>
+
+            <label for="music">3. What is your favorite subject?</label><br>
+            <input type="radio" name="music" value="Pop" id="musicq1">
+            <label for="musicq1">Pop</label><br>
+            <input type="radio" name="music" value="Country" id="musicq2">
+            <label for="musicq2">Country</label><br>
+            <input type="radio" name="music" value="Hip-Hop" id="musicq3">
+            <label for="musicq3">Hip-Hop</label><br>
+            <input type="radio" name="music" value="Classical" id="musicq4">
+            <label for="musicq4">Classical</label><br>
+            <input type="radio" name="music" value="Rock" id="musicq5">
+            <label for="musicq5">Rock</label><br><br>
+        </form>
+    </div>
+</body>
+</html>
