@@ -1,23 +1,21 @@
 <!DOCTYPE html>
     <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
 </head>
 <body>
-    <div id="login-background">
-        
-    </div>
     <div id="login-wrapper">
         <form class="form" action="#" th:action="@{/processForm}" method="post">
             <input placeholder="Username" id="user-login" class="input" type="text" name="username" required>
-            <input placeholder="Password" id="password-login" class="input" type="password" name="username" required>
+            <input placeholder="Password" id="password-login" class="input" type="password" name="password" required>
             <button class="button" type="submit">Login</button>
-            <label> Don't have an account? </label>
+
         </form>
-         <a href="register">
+        <a href="register">
             <button class="button">Register</button>
         </a>
+        <label> Don't have an account? </label>
 
     </div>
 </body>

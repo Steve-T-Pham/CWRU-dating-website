@@ -7,7 +7,7 @@
     flex-direction: column;
     justify-content: center !important;
     align-items: center !important;
-    background: linear-gradient(to bottom right, blue, pink);
+    background: linear-gradient(to bottom right, rgb(140, 140, 230), pink);
     margin: auto;
     position: absolute;
     top: 50%;
@@ -33,6 +33,7 @@
 
 
 .button{
+    text-decoration: none;
     border: 0;
     display:block;
     margin: 15px;
@@ -42,6 +43,8 @@
     filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
     font-weight: bold;
     letter-spacing: 0.2px;
+    text-decoration: none;
+    font-family: "Poppins";
 }
 
 .button:hover{
@@ -53,4 +56,75 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.nav-bar{
+    overflow: hidden;
+}
+
+.nav-bar a{
+    color: black;
+    text-decoration: none;
+    float: left;
+    padding: 14px 60px;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-family: "Poppins";
+}
+
+.home-content-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: lightblue;
+    overflow: auto;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    height: 400px;
+    width: 900px;    
+    margin: auto;
+    background: linear-gradient(to bottom right, rgb(140, 140, 230), pink);
+    border-radius: 15px;
+}
+
+#question-start{
+    position: relative;
+    width: 150px;
+}
+
+.img-wrap{
+    background-image: -webkit-linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+}
+
+.button-slogan{
+    position: relative;
+    text-decoration: none;
+    font-family: "Poppins";
+    width: 500px;
+    font-weight: bold;
+}
+ 
+.content{
+    padding-left: 50px;
+}
+
+.welcome-message{
+    font-size: 50px;
+    font-weight: lighter;
+    display: inline-block;
+    position: relative;
+    padding-left: 60px;
+    padding-bottom: 60px;
+    margin-top: 30px;
+    font-family: "Poppins";
 }

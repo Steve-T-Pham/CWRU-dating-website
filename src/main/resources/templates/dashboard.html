@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <html xmlns:th="https//www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a class="active" href="#home">Home</a>
+        <a href="#profile">Profile</a>
+        <a href="#Users">Users</a>
+    </div>
+
+    <span th:text="'Welcome, ' + ${username} + '.'" class="welcome-message">username</span>
+
+    <div class="home-content-wrapper">
+        <img src="https://cdn-az.allevents.in/events9/banners/d234ae1d3dac82f3ce6bfd77ee0c1c4a1b751bc176b9c00193c1ec905aa6224f-rimg-w799-h533-gmir.jpg?v=1664948533" alt="CWRU image"
+        class="img-wrap" />
+        <div class="content">
+            <h1 class="button-slogan">Start answering our questionnaire and get paired up with a fellow student!</h1>
+            <button class="button" id="question-start">Get Matched →</button>
+        </div>
+    </div>
+
+
+</body>
+</html>
