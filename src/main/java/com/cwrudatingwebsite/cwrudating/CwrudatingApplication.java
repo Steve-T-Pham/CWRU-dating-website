@@ -1,34 +1,13 @@
-package com.cwrudatingwebsite.cwrudating.controllers;
+package com.cwrudatingwebsite.cwrudating;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.cwrudatingwebsite.Account;
+@SpringBootApplication
+public class CwrudatingApplication {
 
-@Controller
-public class Cwrudating {
-    
-    //renders login page
-    @RequestMapping("/login")
-    public ModelAndView firstPage(){
-        return new ModelAndView("index");
-    }
-
-    //returns information from login form and redirects to dashboard page
-    @PostMapping("/processForm")
-    public ModelAndView processForm(@ModelAttribute Account user, Model model){
-        model.addAttribute("username", user.getUsername());
-        return new ModelAndView("dashboard");
-    }
-
-    //renders the register page
-    @RequestMapping("/register")
-    public ModelAndView secondPage(){
-        return new ModelAndView("register");
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(CwrudatingApplication.class, args);
+	}
 
 }
