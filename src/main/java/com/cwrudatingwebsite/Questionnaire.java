@@ -2,12 +2,14 @@ package com.cwrudatingwebsite;
 
 public class Questionnaire {
 
-    public Questionnaire getQuestionnairePersonal(String caseID) {
+    Questionnaire temp = new Questionnaire();
 
+    public Questionnaire getQuestionnairePersonal(String caseID) {
+        return temp;
     }
 
     public Questionnaire getQuestionnairePreference(String caseID) {
-
+        return temp;
     }
     
 }
