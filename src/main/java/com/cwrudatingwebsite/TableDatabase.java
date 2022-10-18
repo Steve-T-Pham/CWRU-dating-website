@@ -13,13 +13,6 @@ public class TableDatabase {
     private ResultSet resultSet = null;
 
     public TableDatabase() {
-       /*  try {
-            Class.forName("org.postgresql.Driver");
-         }
-         catch (ClassNotFoundException e) {
-            System.err.println (e);
-            System.exit (-1);
-         }*/
     }
    
     public void insertAccount(Account account) {
@@ -45,8 +38,31 @@ public class TableDatabase {
         }
     }
     
-    public boolean deleteAccount(Account account, String tablename) {
+    public boolean deleteAccount(Account account) {
+        String insertSql = "DELETE FROM Account WHERE username = "
+        + "'" + account.getUsername() + "'" + ";";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+                PreparedStatement prepsInsertProduct = connection.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);) {
+
+            prepsInsertProduct.execute();
+            // Retrieve the generated key from the insert.
+            resultSet = prepsInsertProduct.getGeneratedKeys();
+
+            // Print the ID of the inserted row.
+            while (resultSet.next()) {
+                System.out.println("Generated: " + resultSet.getString(1));
+            }
+        }
+        // Handle any errors that may have occurred.
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*if username, email, password not exist
+        return true
+        else */
         return false;
+
     }
 
     public void editAccount(Account account, String password, String tablename) {
@@ -74,7 +90,8 @@ public class TableDatabase {
     public static void main(String[] args) {
         Account person1 = new Account("lsn19", "temp", "lsn19@case.edu");
         TableDatabase one = new TableDatabase();
-        one.insertAccount(person1);
+        //one.insertAccount(person1);
+        one.deleteAccount(person1);
 
     }
 
