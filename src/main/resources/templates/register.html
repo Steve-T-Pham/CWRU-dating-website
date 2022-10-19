@@ -1,45 +1,65 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> </title>
+    <title> CWRU Dating Sign-Up From</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
 </head>
 <body>
-    <h1> 
-       Registration Form 
-    </h1>
-    <form class="form" action="#" th:action="@{/processForm}" method="post">
-        <div>
-            <label for="first-name"> First Name: </label>
-            <input type="text" id ="first-name" placeholder ="First Name" required>
-        </div>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Creative SignUp Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" method="post">
 
-        <div>
-            <label for="last-name"> Last Name: </label>
-            <input type="text" id = "last-name" placeholder ="Last Name" required>
-        </div>
-        <div>
-            <label for="case-id"> Case ID:</label>
-            <input type="email" id ="case-id" placeholder = "@case.edu" required>
-        </div>
-        <div>
-            <label for="username"> Username: </label>
-            <input type="text" id = "username" placeholder="Username" required>
-        </div>
-            <label for="pass"> Password </label>
-            <input type="password" id ="pass" placeholder="Password" minlength ="8" required> 
-            <div id ="pass-message">
-                <h3> Password must contain the following:</h3>
-                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                <p id="number" class="invalid">A <b>number</b></p>
-                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-            </div>
-        <div>
-            
-        </div>
-    </form>
+                    <div>
+                        <label for="username"> Username: </label>
+					    <input type="text" id ="username" placeholder="Username" placeholder="Username" required="">
+                    <div>
+
+                        <label for="first-name"> First Name: </label>
+                        <input type="text" id ="first-name" placeholder ="First Name" required>
+                    </div>
+
+                    <div>
+                        <label for="last-name"> Last Name: </label>
+                        <input type="text" id = "last-name" placeholder ="Last Name" required>
+                    </div>
+
+                    <div>
+                        <label for="case-id"> Case ID:</label>
+                        <input type="email" id ="case-id" placeholder = "@case.edu" required>
+                    </div>
+                    <div>
+                        <label for="password"> Password: </label>
+                        <input type="password" id ="pass" placeholder="Password" minlength ="8" required> 
+                    </div>
+                    <div>
+                        <label for="re-password"> Repeated Password: </label>
+                        <input id = "re-pass" type="password" placeholder="RepeatedPassword" required="">
+                    </div>
+					
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="SIGN UP">
+				</form>
+				<p> Have an Account? <a href="index"> Login Now!</a></p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
