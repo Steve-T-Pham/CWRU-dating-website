@@ -25,7 +25,32 @@ public class AccountTest {
     
         assertEquals("Testing Get Username", expected,actual);
     }
+
+    @AccountTest
+    public void testGetPassword(){
+        //Expected variable , actual variable , compare
+        string expected = "1234";
+        String actual = aAccount.getPassword();
+    
+        assertEquals("Testing Get Password", expected,actual);
+
+    }
+    
+    @AccountTest
+    public void testGetEmail(){
+        //Expected variable , actual variable , compare
+        string expected = "srd137@case,edu";
+        String actual = aAccount.getEmail();
+    
+        assertEquals("Testing Get Email", expected,actual);
+
+    }
+     
+
+
 }
+
+
 
 
 
