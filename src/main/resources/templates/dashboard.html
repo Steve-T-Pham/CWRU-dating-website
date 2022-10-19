@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <html xmlns:th="https//www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a class="active" href="#home" onClick="reload">Home</a>
+        <a href="#profile">Profile</a>
+        <a href="#Users">Users</a>
+        <a href="login">Logout</a>
+        <div class="nav-right">
+            <a href="https://github.com/Steve-T-Pham/CWRU-dating-website" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+        </div>
+    </div>
+
+    <span th:text="'Welcome, ' + ${username} + '.'" class="welcome-message">username</span>
+    <h2 class="welcome-subtext">Relationships are made to feel easy, so use our service to find the perfect match for you today.</h2>
+
+    <div class="home-content-wrapper">
+        <img src="https://cdn-az.allevents.in/events9/banners/d234ae1d3dac82f3ce6bfd77ee0c1c4a1b751bc176b9c00193c1ec905aa6224f-rimg-w799-h533-gmir.jpg?v=1664948533" alt="CWRU image"
+        class="img-wrap" />
+        <div class="content">
+            <h1 class="button-slogan">Start answering our questionnaire and get paired up with a fellow student!</h1>
+            <a href="questionnaire"><button class="button" id="question-start">Get Matched →</button></a>
+        </div>
+    </div>
+
+    <div class="arrow-down"><i class="fa-solid fa-angle-down"></i></div>
+
+    <div class="home-stats-wrapper">
+
+        <h1 class="bracket-section-header">Our simple 3-step formula to finding your partner</h1>
+
+        <div class="bracket-section">
+            <div class="form-icon-wrapper">
+                <i class="fa-solid fa-pen-to-square" id="form-icon"></i>
+                <h2>Fill out the questionnaire to be matched with other students at Case Western Reserve University based on our algorithm.</h2>
+            </div>
+            <div class="heart-icon-wrapper">
+                <i class="fa-solid fa-heart" id="heart-icon"></i>
+                <h2>Start handing out likes to students who you would think would make a great match and based off our analysis.</h2>
+            </div>
+            <div class="message-icon-wrapper">
+                <i class="fa-solid fa-message" id="message-icon"></i>
+                <h2>We send you and who you connect with an email so you two can further connect outside of our website.</h2>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
