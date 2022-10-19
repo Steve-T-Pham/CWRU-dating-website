@@ -1,9 +1,8 @@
 package com.cwrudatingwebsite;
 
-public class AdminAccountDelete {
+public class Admin {
+	
 	private String email;
 }
 
-public class AdminAccountEdit {
-	private String email;
-}
+
