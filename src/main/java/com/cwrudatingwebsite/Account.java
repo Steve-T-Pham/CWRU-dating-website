@@ -5,14 +5,14 @@ import java.beans.Transient;
 
 public class Account {
 
-    String username = "";
-    String password = "";
-    String email = "";
-    String first_name = "";
-    String last_name = "";
+    String username = null;
+    String password = null;
+    String email = null;
+    String first_name = null;
+    String last_name = null;
 
     
-    public Account(String username, String password, String email)  {
+    public Account(String username, String password, String email, String first_name, String last_name)  {
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);

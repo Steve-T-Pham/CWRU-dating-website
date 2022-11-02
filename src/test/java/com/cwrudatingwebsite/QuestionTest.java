@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 
 public class QuestionTest {
 
-    static Question aQuestion = new Question(null, null):
+    static Question aQuestion = new Question(null, null);
 
     public static void setupClass(){
         aQuestion.setQuestion("What is your major");
@@ -30,7 +30,7 @@ public class QuestionTest {
     
     public void testGetOptions(){
 
-        string expected = "";
+        String expected = "";
     }
 
  
