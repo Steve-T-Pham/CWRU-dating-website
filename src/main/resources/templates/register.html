@@ -1,29 +1,27 @@
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https//www.thymeleaf.org">
 <head>
     <title> CWRU Dating Sign-Up From</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files -->
-<!-- web font -->
-    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet2.css" media = "all"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script scr="feature.js"></script>
 <!-- //web font -->
 </head>
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
-		<h1>Creative SignUp Form</h1>
+		<h1>CWRU Dating Sign-Up Form</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="#" method="post">
 
                     <div>
                         <label for="username"> Username: </label>
-					    <input type="text" id ="username" placeholder="Username" placeholder="Username" required="">
+					    <input type="text" id ="username" placeholder="Username" required=>
                     <div>
 
                         <label for="first-name"> First Name: </label>
@@ -42,10 +40,16 @@
                     <div>
                         <label for="password"> Password: </label>
                         <input type="password" id ="pass" placeholder="Password" minlength ="8" required> 
+                        <i class="show fa fa-eye"></i>
+		                <i class="hide fa fa-eye-slash"></i>
+
                     </div>
                     <div>
                         <label for="re-password"> Repeated Password: </label>
                         <input id = "re-pass" type="password" placeholder="RepeatedPassword" required="">
+                        <i class="show fa fa-eye"></i>
+		                <i class="hide fa fa-eye-slash"></i>
+
                     </div>
 					
 					<div class="wthree-text">
@@ -57,7 +61,7 @@
 					</div>
 					<input type="submit" value="SIGN UP">
 				</form>
-				<p> Have an Account? <a href="index"> Login Now!</a></p>
+				<p> Have an Account? <a href="index"> Login Now!</a> </p>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,8 @@
 package com.cwrudatingwebsite;
 
+import java.beans.Transient;
+
+
 public class Account {
 
     String username = "";
@@ -59,5 +62,4 @@ public class Account {
         this.last_name  = last_name;
     }
 
-    
 }
