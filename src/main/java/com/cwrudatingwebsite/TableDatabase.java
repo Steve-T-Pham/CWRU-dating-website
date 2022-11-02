@@ -18,7 +18,9 @@ public class TableDatabase {
     public void insertAccount(Account account) {
 
         String insertSql = "INSERT INTO Account VALUES "
-        + "(" + "'" + account.getUsername() + "'" + ", " + "'" + account.getPassword() + "'" + ", " + "'" + account.getEmail() + "'" + ");";
+        + "(" + "'" + account.getUsername() + "'" + ", " + "'" + account.getPassword() + "'" + ", " + "'" 
+        + account.getEmail() + "'" + ", " + "'" + account.getFirstName() + "'" + ", " + "'" + account.getLastName() 
+        + "'" + ");";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
                 PreparedStatement prepsInsertProduct = connection.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);) {
@@ -90,8 +92,8 @@ public class TableDatabase {
     public static void main(String[] args) {
         Account person1 = new Account("lsn19", "temp", "lsn19@case.edu");
         TableDatabase one = new TableDatabase();
-        //one.insertAccount(person1);
-        one.deleteAccount(person1);
+        one.insertAccount(person1);
+        //one.deleteAccount(person1);
 
     }
 
