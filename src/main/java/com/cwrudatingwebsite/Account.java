@@ -28,6 +28,7 @@ public class Account {
 
     public void setUsername(String username) {
         this.username = username;
+        //if contains ' or " give error
     }
 
     public String getPassword() {
