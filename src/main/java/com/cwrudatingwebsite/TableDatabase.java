@@ -26,7 +26,7 @@ public class TableDatabase {
                     pStmt.setString(3, account.getEmail());
                     pStmt.setString(4, account.getFirstName());
                     pStmt.setString(5, account.getLastName());
-                    pStmt.executeUpdate();
+                    pStmt.execute();
                
             // Retrieve the generated key from the insert.
             resultSet = pStmt.getGeneratedKeys();
@@ -48,7 +48,7 @@ public class TableDatabase {
         try (Connection connection = DriverManager.getConnection(url, user, password);
                 PreparedStatement pStmt = connection.prepareStatement(deleteSql, Statement.RETURN_GENERATED_KEYS);) {
                     pStmt.setString(1, account.getUsername());
-                    pStmt.executeUpdate();
+                    pStmt.execute();
             
         }
         // Handle any errors that may have occurred.
@@ -71,7 +71,7 @@ public class TableDatabase {
                 PreparedStatement pStmt = connection.prepareStatement(editSql, Statement.RETURN_GENERATED_KEYS);) {
                     pStmt.setString(1, account.getPassword());
                     pStmt.setString(2, account.getUsername());
-                    pStmt.executeUpdate();
+                    pStmt.execute();
         }
         // Handle any errors that may have occurred.
         catch (Exception e) {
@@ -87,7 +87,7 @@ public class TableDatabase {
                 PreparedStatement pStmt = connection.prepareStatement(editSql, Statement.RETURN_GENERATED_KEYS);) {
                     pStmt.setString(2, account.getEmail());
                     pStmt.setString(2, account.getUsername());
-                    pStmt.executeUpdate();
+                    pStmt.execute();
         }
         // Handle any errors that may have occurred.
         catch (Exception e) {
@@ -103,7 +103,7 @@ public class TableDatabase {
                 PreparedStatement pStmt = connection.prepareStatement(editSql, Statement.RETURN_GENERATED_KEYS);) {
                     pStmt.setString(2, account.getFirstName());
                     pStmt.setString(2, account.getUsername());
-                    pStmt.executeUpdate();
+                    pStmt.execute();
         }
         // Handle any errors that may have occurred.
         catch (Exception e) {
@@ -119,7 +119,7 @@ public class TableDatabase {
                 PreparedStatement pStmt = connection.prepareStatement(editSql, Statement.RETURN_GENERATED_KEYS);) {
                     pStmt.setString(2, account.getLastName());
                     pStmt.setString(2, account.getUsername());
-                    pStmt.executeUpdate();
+                    pStmt.execute();
         }
         // Handle any errors that may have occurred.
         catch (Exception e) {
