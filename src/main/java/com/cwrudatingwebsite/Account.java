@@ -41,6 +41,14 @@ public class Account {
         this.setLastName(last_name);
     }
 
+    public Account(){
+        this.setUsername(null);
+        this.setPassword(null);
+        this.setEmail(null);
+        this.setFirstName(null);
+        this.setLastName(null);
+    }
+
     //------- Getters and Setters -------
     public String getUsername() {
         //pull from sql
