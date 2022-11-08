@@ -18,29 +18,29 @@
 		<h1>CWRU Dating Sign-Up Form</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
-				<form th:action="@{/process_register}" method="post" th:object="${user}">
+				<form th:action="@{/process_register}" action="insert.php" method="post" th:object="${user}">
 
                     <div>
                         <label for="username"> Username: </label>
-					    <input type="text" id="username" placeholder="Username" th:field="*{username}" required>
+					    <input type="text" id="username" name="username" placeholder="Username" th:field="*{username}" required>
                     </div>
                     <div>
                         <label for="firstName"> First Name: </label>
-                        <input type="text" id="firstName" placeholder="First Name" th:field="*{firstName}" required>
+                        <input type="text" id="firstName" name ="firstName" placeholder="First Name" th:field="*{firstName}" required>
                     </div>
 
                     <div>
                         <label for="lastName"> Last Name: </label>
-                        <input type="text" id= "lastName" placeholder="Last Name" th:field="*{lastName}" required>
+                        <input type="text" id= "lastName" name="lastName" placeholder="Last Name" th:field="*{lastName}" required>
                     </div>
 
                     <div>
                         <label for="email"> Case ID:</label>
-                        <input type="email" id ="email" placeholder = "@case.edu" th:field="*{email}" required>
+                        <input type="email" id ="email" name="email"placeholder = "@case.edu" th:field="*{email}" required>
                     </div>
                     <div>
                         <label for="password"> Password: </label>
-                        <input type="password" id ="pass" placeholder="Password" minlength ="8" th:field="*{password}" required> 
+                        <input type="password" id ="pass" name ="password" placeholder="Password" minlength ="8" th:field="*{password}" required> 
                         <i class="show fa fa-eye"></i>
 		                <i class="hide fa fa-eye-slash"></i>
 
