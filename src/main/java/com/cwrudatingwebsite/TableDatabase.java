@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class TableDatabase {
     private final String url = "jdbc:postgresql://localhost/CWRU Dating Website";
     private final String user = "postgres";
-    private final String password = "root";
+    private final String password = "admin";
     private ResultSet resultSet = null;
 
     public TableDatabase() {
@@ -164,8 +164,8 @@ public class TableDatabase {
         Account person1 = new Account("lsn19", "temp", "lsn19@case.edu", "Lara", "Nakisli");
         Account person2 = new Account("mrk4", "tart", "mrk4@case.edu", "Mark", "Kelvin");
         TableDatabase one = new TableDatabase();
-       //one.insertAccount(person1);
-       //one.insertAccount(person2);
+       one.insertAccount(person1);
+       one.insertAccount(person2);
         //one.editAccountPassword(person1, "poptarts");
         //one.deleteAccount(person1);
         //one.readAccount();
