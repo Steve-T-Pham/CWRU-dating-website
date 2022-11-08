@@ -1,23 +1,43 @@
 package com.cwrudatingwebsite;
 
-import java.beans.Transient;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name = "account")
 public class Account {
 
-    String username = null;
-    String password = null;
-    String email = null;
-    String first_name = null;
-    String last_name = null;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int id = 0;
 
-    
-    public Account(String username, String password, String email, String first_name, String last_name)  {
+    @Column(nullable = false, unique = true, length = 45)
+    String username = null;
+
+    @Column(nullable = false, length = 45)
+    String password = null;
+
+    @Column(nullable = false, length = 45)
+    String email = null;
+/* 
+    @Column(nullable = false, length = 45)
+    String first_name = null;
+
+    @Column(nullable = false, length = 45)
+    String last_name = null;
+*/
+
+    //String first_name, String last_name
+    public Account(String username, String password, String email)  {
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);
-        this.setFirstName(first_name);
-        this.setLastName(last_name);
     }
 
     //------- Getters and Setters -------
@@ -46,6 +66,7 @@ public class Account {
         this.email  = email;
     }
 
+    /* 
     public String getFirstName() {
         return first_name;
     }
@@ -60,6 +81,6 @@ public class Account {
 
     public void setLastName(String last_name) {
         this.last_name  = last_name;
-    }
+    }*/
 
 }
