@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-    <html xmlns:th="https//www.thymeleaf.org">
+    <html xmlns:th="https://www.thymeleaf.org" 
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
@@ -10,16 +11,15 @@
 <body>
 
     <div class="nav-bar">
-        <a class="active" href="#home" onClick="reload">Home</a>
-        <a href="#profile">Profile</a>
-        <a href="#Users">Users</a>
+        <a class="active" href="dashboard" onClick="reload">Home</a>
+        <a href="profile">Profile</a>
         <a href="login">Logout</a>
         <div class="nav-right">
             <a href="https://github.com/Steve-T-Pham/CWRU-dating-website" target="_blank"><i class="fa-brands fa-square-github"></i></a>
         </div>
     </div>
 
-    <span th:text="'Welcome, ' + ${username} + '.'" class="welcome-message">username</span>
+    <span th:text="'Welcome, ' + ${#request.userPrincipal.principal.username} + '.'" class="welcome-message">username</span>
     <h2 class="welcome-subtext">Relationships are made to feel easy, so use our service to find the perfect match for you today.</h2>
 
     <div class="home-content-wrapper">

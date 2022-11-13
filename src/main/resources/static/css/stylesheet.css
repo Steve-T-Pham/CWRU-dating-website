@@ -30,6 +30,10 @@
     font-weight: bold;
 }
 
+#login-label{
+    font-family: 'Poppins';
+}
+
 a{
     text-decoration: none;
     font-family: "Poppins";
@@ -52,10 +56,6 @@ a{
 
 .button:hover{
     cursor: pointer;
-}
-
-#login-button{
-    font-family: "Poppins";
 }
 
 .form{
@@ -260,4 +260,26 @@ a{
     justify-content: center !important;
     align-items: center !important;
     font-family: "Poppins";
+}
+
+
+/* PROFILE SECTION */
+
+.profile-wrapper{
+    margin-top: 50px;
+}
+
+.profile-account-info{
+    display: inline-block;
+    font-family: "Poppins";
+    margin-left: 50px;
+    font-size: 40px;
+}
+
+.profile-picture{
+    display: inline-block;
+    height: 250px;
+    width: 250px;
+    background-color: black;
+    border-radius: 50%;
 }
