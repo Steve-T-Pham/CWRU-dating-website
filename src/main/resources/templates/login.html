@@ -9,12 +9,12 @@
         <form class="form" th:action="@{/login}" method="post" autocomplete="off">
             <input placeholder="Username" id="user-login" class="input" type="text" name="username" required>
             <input placeholder="Password" id="password-login" class="input" type="password" name="password" required>
-            <button class="button" type="submit" id="login-button">Login</button>
+            <button class="button" type="submit">Login</button>
         </form>
         <a href="register">
-            <button class="button">Register</button>
+            <button class="button" >Register</button>
         </a>
-        <label> Don't have an account? </label>
+        <label id="login-label"> Don't have an account? </label>
 
     </div>
 </body>

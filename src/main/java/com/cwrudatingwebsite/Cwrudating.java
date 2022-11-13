@@ -1,7 +1,5 @@
 package com.cwrudatingwebsite;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -21,9 +19,9 @@ public class Cwrudating {
     private AccountRepository repo;
 
     //renders login page
-    @PostMapping("")
-    public ModelAndView firstPage(@ModelAttribute Account user, Model model){
-        model.addAttribute("username", user.getUsername());
+    @GetMapping("")
+    public ModelAndView firstPage(@ModelAttribute Account account, Model model){
+        model.addAttribute("username", repo.findByUsername(account.getUsername()));
         return new ModelAndView("login");
     }
 
@@ -38,18 +36,19 @@ public class Cwrudating {
     //renders the register page
     @RequestMapping("/register")
     public ModelAndView secondPage(Model model){
-        model.addAttribute("user", new Account(null, null, null, null, null));
+        model.addAttribute("account", new Account());
         return new ModelAndView("register");
     }
     
     //password encryption
     @PostMapping("/process_register")
-    public ModelAndView processRegisteration(@ModelAttribute Account user){
+    public ModelAndView processRegisteration(@ModelAttribute Account account, Model model){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encodedPassword = passwordEncoder.encode(user.getPassword());
-		user.setPassword(encodedPassword);
-        repo.save(user);
-        return new ModelAndView("index");
+		String encodedPassword = passwordEncoder.encode(account.getPassword());
+        model.addAttribute("account", account);
+		account.setPassword(encodedPassword);
+        repo.save(account);
+        return new ModelAndView("login");
     }
 
     //renders the questionnaire page
@@ -58,16 +57,24 @@ public class Cwrudating {
         return new ModelAndView("questionnaire");
     }
 
-    @RequestMapping("/dashboard")
-    public ModelAndView fourthPage(){
+    @GetMapping("/dashboard")
+    public ModelAndView fourthPage(@ModelAttribute Account account, Model model){
+        model.addAttribute("account", account);
         return new ModelAndView("dashboard");
     }
 
+    @GetMapping("/profile")
+    public ModelAndView fifthPage(@ModelAttribute Account account, Model model){
+        model.addAttribute("account", account);
+        return new ModelAndView("profile");
+    }
+
+    /* 
     //broken at the moment *for showing all members*
     @GetMapping("/list_accounts")
     public ModelAndView viewAccounts(Model model){
         List<Account> listAccount = repo.findAll();
         model.addAttribute("listAccount", listAccount);
         return new ModelAndView("accounts");
-    }
+    }*/
 }
