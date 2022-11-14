@@ -14,8 +14,8 @@ import javax.persistence.Table;
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int id;
 
     @Column(nullable = false, unique = true, length = 45)
     String username = null;
@@ -50,14 +50,15 @@ public class Account {
     }
 
     //------- Getters and Setters -------
-    public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public int getId(){
+        return id;
+    }
 
+    public void setId(int id){
+        this.id = id;
+    }
+    
     public String getUsername() {
         //pull from sql
         return username;

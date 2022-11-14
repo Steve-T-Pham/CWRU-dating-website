@@ -19,34 +19,25 @@ public class Cwrudating {
     private AccountRepository repo;
 
     //renders login page
-    @GetMapping("")
+    @GetMapping("/login")
     public ModelAndView firstPage(@ModelAttribute Account account, Model model){
-        model.addAttribute("username", repo.findByUsername(account.getUsername()));
+        model.addAttribute("username", account.getUsername());
         return new ModelAndView("login");
     }
 
-    /*returns information from login form and redirects to dashboard page
-    @PostMapping("/processForm")
-    public ModelAndView processForm(@ModelAttribute Account user, Model model){
-        model.addAttribute("username", user.getUsername());
-        return new ModelAndView("dashboard");
-    }
-    */
-    
     //renders the register page
     @RequestMapping("/register")
     public ModelAndView secondPage(Model model){
-        model.addAttribute("account", new Account());
+        model.addAttribute("account", new Account(null, null, null, null, null));
         return new ModelAndView("register");
     }
     
     //password encryption
     @PostMapping("/process_register")
-    public ModelAndView processRegisteration(@ModelAttribute Account account, Model model){
+    public ModelAndView processRegisteration(@ModelAttribute Account account){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(account.getPassword());
-        model.addAttribute("account", account);
-		account.setPassword(encodedPassword);
+        account.setPassword(encodedPassword);
         repo.save(account);
         return new ModelAndView("login");
     }
