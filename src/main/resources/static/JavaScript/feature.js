@@ -1,15 +1,21 @@
-var passwordField = document.querySelector('.password');
-var show = document.querySelector('.show');
-var hide = document.querySelector('.hide');
+const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#pass');
 
-show.onclick = function(){
-	passwordField.setAttribute("type", "text");
-	show.style.display = "none";
-	hide.style.display = "block";
-}
+togglePassword.addEventListener('click', function (e) {
+   // toggle the type attribute
+   const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+   password.setAttribute('type', type);
+   // toggle the eye slash icon
+   this.classList.toggle('fa-eye-slash');
+});
 
-hide.onclick = function(){
-	passwordField.setAttribute("type", "password");
-	hide.style.display = "none";
-	show.style.display = "block";
-}
+const toggleRePassword = document.querySelector('#toggleRePassword');
+const repassword = document.querySelector('#repassword');
+
+toggleRePassword.addEventListener('click', function (e) {
+   // toggle the type attribute
+ const type = repassword.getAttribute('type') === 'password' ? 'text' : 'password';
+   repassword.setAttribute('type', type);
+   // toggle the eye slash icon
+   this.classList.toggle('fa-eye-slash');
+});
