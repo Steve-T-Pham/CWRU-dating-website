@@ -65,7 +65,7 @@
 			<artifactId>jquery</artifactId>
 			<version>3.4.1</version>
 		</dependency>
-<!-- lJunit5 dependencies below -->
+<!-- lJunit5 dependencies below 
 		<dependency>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-api</artifactId>
@@ -74,11 +74,11 @@
       	</dependency>
 
       	<dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter-engine</artifactId>
-          <version>5.4.2</version>
-          <scope>test</scope>
-      	</dependency>
+    		<groupId>org.junit.jupiter</groupId>
+    		<artifactId>junit-jupiter</artifactId>
+    		<version>5.4.2</version>
+    		<scope>test</scope>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.webjars</groupId>
