@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.SQLException;
 
 public class TableDatabase {
     private final String url = "jdbc:postgresql://localhost/CWRU Dating Website";
     private final String user = "postgres";
-    private final String password = "admin";
+    private final String password = "root";
     private ResultSet resultSet = null;
 
     public TableDatabase() {
@@ -17,7 +18,7 @@ public class TableDatabase {
    
     public void insertAccount(Account account) {
 
-        String insertSql = "INSERT INTO Account VALUES (?,?,?,?,?);";
+        String insertSql = "INSERT INTO Account(username, password, email, first_name, last_name) VALUES (?,?,?,?,?);";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
                 PreparedStatement pStmt = connection.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);) {
@@ -85,7 +86,7 @@ public class TableDatabase {
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
                 PreparedStatement pStmt = connection.prepareStatement(editSql, Statement.RETURN_GENERATED_KEYS);) {
-                    pStmt.setString(2, account.getEmail());
+                    pStmt.setString(1, account.getEmail());
                     pStmt.setString(2, account.getUsername());
                     pStmt.execute();
         }
@@ -97,11 +98,11 @@ public class TableDatabase {
 
     public void editAccountFirstName(Account account, String first_name) {
         account.setFirstName(first_name);
-        String editSql = "UPDATE Account SET firstname = ? WHERE username = ?;";
+        String editSql = "UPDATE Account SET first_name = ? WHERE username = ?;";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
                 PreparedStatement pStmt = connection.prepareStatement(editSql, Statement.RETURN_GENERATED_KEYS);) {
-                    pStmt.setString(2, account.getFirstName());
+                    pStmt.setString(1, account.getFirstName());
                     pStmt.setString(2, account.getUsername());
                     pStmt.execute();
         }
@@ -113,11 +114,11 @@ public class TableDatabase {
 
     public void editAccountLastName(Account account, String last_name) {
         account.setLastName(last_name);
-        String editSql = "UPDATE Account SET lastname = ? WHERE username = ?;";
+        String editSql = "UPDATE Account SET last_name = ? WHERE username = ?;";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
                 PreparedStatement pStmt = connection.prepareStatement(editSql, Statement.RETURN_GENERATED_KEYS);) {
-                    pStmt.setString(2, account.getLastName());
+                    pStmt.setString(1, account.getLastName());
                     pStmt.setString(2, account.getUsername());
                     pStmt.execute();
         }
@@ -140,36 +141,121 @@ public class TableDatabase {
     }
 
 
-    public void readAccount() { // what do we want tihs to read?
-        try (Connection connection = DriverManager.getConnection(url, user, password);
-                Statement statement = connection.createStatement();) {
+    public String readAccount(String string, Account account) {
+        switch(string) {
+            case "username":
+                try (Connection connection = DriverManager.getConnection(url, user, password);
+                        Statement statement = connection.createStatement();) {
 
-            // Create and execute a SELECT SQL statement.
-            String selectSql = "SELECT * from Account";
-            resultSet = statement.executeQuery(selectSql);
+                    // Create and execute a SELECT SQL statement.
+                    String selectSql = "SELECT username from Account where username = " + "'" + account.getUsername() + "'";
+                    resultSet = statement.executeQuery(selectSql);
 
-            // Print results from select statement
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString(1));
-            }
+                    // Print results from select statement
+                    while (resultSet.next()) {
+                        return resultSet.getString(1);
+                    }
+                }
+
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            break;
+
+            case "password":
+                try (Connection connection = DriverManager.getConnection(url, user, password);
+                        Statement statement = connection.createStatement();) {
+
+                    // Create and execute a SELECT SQL statement.
+                    String selectSql = "SELECT password from Account where username = " + "'" + account.getUsername() + "'";
+                    resultSet = statement.executeQuery(selectSql);
+
+                    // Print results from select statement
+                    while (resultSet.next()) {
+                        return resultSet.getString(1);
+                    }
+                }
+
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            break;
+
+            case "email":
+                try (Connection connection = DriverManager.getConnection(url, user, password);
+                        Statement statement = connection.createStatement();) {
+
+                    // Create and execute a SELECT SQL statement.
+                    String selectSql = "SELECT email from Account where username = " + "'" + account.getUsername() + "'";
+                    resultSet = statement.executeQuery(selectSql);
+
+                    // Print results from select statement
+                    while (resultSet.next()) {
+                        return resultSet.getString(1);
+                    }
+                }
+
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            break;
+
+            case "first_name":
+                try (Connection connection = DriverManager.getConnection(url, user, password);
+                        Statement statement = connection.createStatement();) {
+
+                    // Create and execute a SELECT SQL statement.
+                    String selectSql = "SELECT first_name from Account where username = " + "'" + account.getUsername() + "'";
+                    resultSet = statement.executeQuery(selectSql);
+
+                    // Print results from select statement
+                    while (resultSet.next()) {
+                        return resultSet.getString(1);
+                    }
+                }
+
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            break;
+
+            case "last_name":
+                try (Connection connection = DriverManager.getConnection(url, user, password);
+                        Statement statement = connection.createStatement();) {
+
+                    // Create and execute a SELECT SQL statement.
+                    String selectSql = "SELECT last_name from Account where username = " + "'" + account.getUsername() + "'";
+                    resultSet = statement.executeQuery(selectSql);
+
+                    // Print results from select statement
+                    while (resultSet.next()) {
+                        return resultSet.getString(1);
+                    }
+                }
+
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            break;
         }
-
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        
+        return "No such field exists";
     }
 
     public static void main(String[] args) {
         Account person1 = new Account("lsn19", "temp", "lsn19@case.edu", "Lara", "Nakisli");
         Account person2 = new Account("mrk4", "tart", "mrk4@case.edu", "Mark", "Kelvin");
         TableDatabase one = new TableDatabase();
-       one.insertAccount(person1);
-       one.insertAccount(person2);
+       //one.insertAccount(person1);
+       //one.insertAccount(person2);
         //one.editAccountPassword(person1, "poptarts");
         //one.deleteAccount(person1);
-        //one.readAccount();
+        System.out.println(one.readAccount("username", person1));
+        System.out.println(one.readAccount("password", person1));
+        System.out.println(one.readAccount("email", person1));
+        System.out.println(one.readAccount("first_name", person1));
+        System.out.println(one.readAccount("last_name", person1));
 
     }
 
+    
 }

@@ -11,7 +11,7 @@ public class Questionnaire { //all the question objects in this questionnaire
         return a;
     }
     public void setQuestionnaire(Question[] c){
-        //set all the question objects (with answers) from the database
+        //et all the question objects (with answers) from the database
         a=c;
     }
 }
