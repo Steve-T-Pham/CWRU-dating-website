@@ -69,4 +69,16 @@ public class TableDatabaseTest {
     assertEquals("Nak", one.readAccount("last_name", person1));
   }
 
+  @Test
+  public void testReadAccount() {
+    Account person1 = new Account("lsn19", "temp", "lsn19@case.edu", "Lara", "Nakisli");
+    TableDatabase one = new TableDatabase();
+    one.deleteAccount(person1); //to reset the database for each test
+    one.insertAccount(person1);
+    assertEquals("lsn19", one.readAccount("username", person1));
+    assertEquals("temp", one.readAccount("password", person1));
+    assertEquals("Lara", one.readAccount("first_name", person1));
+    assertEquals("Nakisli", one.readAccount("last_name", person1));
+  } 
+
 }

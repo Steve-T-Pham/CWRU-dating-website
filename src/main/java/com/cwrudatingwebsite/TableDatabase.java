@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.SQLException;
 
 public class TableDatabase {
     private final String url = "jdbc:postgresql://localhost/CWRU Dating Website";
