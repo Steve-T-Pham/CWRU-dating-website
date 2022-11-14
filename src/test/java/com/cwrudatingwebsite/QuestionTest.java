@@ -18,7 +18,7 @@ public class QuestionTest {
     }
 
     @Test
-    public  void testGetQuestion(){
+    public void testGetQuestion(){
         //Expected variable , actual variable , compare
     Question hi = new Question("What is your major", null);
     String expected = "What is your major";
