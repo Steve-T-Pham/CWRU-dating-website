@@ -2,6 +2,7 @@ package com.cwrudatingwebsite;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import com.cwrudatingwebsite.Question;
 //This is the extra file that has more reliable tests than the other QuestionTest.java (which shows the errors in the logic)
 class QuestionTestA {
 
