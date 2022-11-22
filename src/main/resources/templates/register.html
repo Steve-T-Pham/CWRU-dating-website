@@ -4,12 +4,12 @@
     <title> CWRU Dating Sign-Up From</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="css/stylesheet2.css" media = "all"/>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script scr="feature.js"></script>
+    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' media="screen" />
+    <script type="text/javascript" src="index.js"> </script>
 <!-- //web font -->
 </head>
 <body>
@@ -36,20 +36,18 @@
 
                     <div>
                         <label for="email"> Case ID:</label>
-                        <input type="email" id ="email" name="email"placeholder = "@case.edu" th:field="*{email}" required>
+                        <input type="email" id ="email" name="email"placeholder = "@case.edu" pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+[\S]@(case.edu)" th:field="*{email}"  required>
                     </div>
                     <div>
                         <label for="password"> Password: </label>
-                        <input type="password" id ="pass" name ="password" placeholder="Password" minlength ="8" th:field="*{password}" required> 
-                        <i class="show fa fa-eye"></i>
-		                <i class="hide fa fa-eye-slash"></i>
+                        <input type="password" id="pass" name="password" placeholder ="Password" autocomplete="current-password" minlength ="8" th:field="*{password}" required= > 
+                        <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
 
                     </div>
                     <div>
                         <label for="re-password"> Repeated Password: </label>
-                        <input id = "re-pass" type="password" placeholder="RepeatedPassword" required="">
-                        <i class="show fa fa-eye"></i>
-		                <i class="hide fa fa-eye-slash"></i>
+                        <input id = "repassword" type="password" placeholder="Repeated Password" required="">
+                        <i class="far fa-eye" id="toggleRePassword" style="margin-left: -30px; cursor: pointer;">
 
                     </div>
 					
@@ -60,7 +58,7 @@
 						</label>
 						<div class="clear"> </div>
 					</div>
-					<button type="submit">Sign Up</button>
+					<button type="submit" id="signup">Sign Up</button>
 				</form>
 				<p> Have an Account? <a href="login">Login Now!</a> </p>
 			</div>

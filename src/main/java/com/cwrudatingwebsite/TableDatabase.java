@@ -127,7 +127,7 @@ public class TableDatabase {
         }
     }
 
-    public void insertQuestionnaire(Questionnaire questionnaire, String tablename) {
+    public void insertQuestionnaire(Questionnaire questionnaire) {
         //insert into sql
     }
     
@@ -244,15 +244,15 @@ public class TableDatabase {
         Account person1 = new Account("lsn19", "temp", "lsn19@case.edu", "Lara", "Nakisli");
         Account person2 = new Account("mrk4", "tart", "mrk4@case.edu", "Mark", "Kelvin");
         TableDatabase one = new TableDatabase();
-       //one.insertAccount(person1);
+       one.insertAccount(person1);
        //one.insertAccount(person2);
         //one.editAccountPassword(person1, "poptarts");
         //one.deleteAccount(person1);
-        System.out.println(one.readAccount("username", person1));
-        System.out.println(one.readAccount("password", person1));
-        System.out.println(one.readAccount("email", person1));
-        System.out.println(one.readAccount("first_name", person1));
-        System.out.println(one.readAccount("last_name", person1));
+        //System.out.println(one.readAccount("username", person1));
+        //System.out.println(one.readAccount("password", person1));
+       //System.out.println(one.readAccount("email", person1));
+       // System.out.println(one.readAccount("first_name", person1));
+        //System.out.println(one.readAccount("last_name", person1));
 
     }
 

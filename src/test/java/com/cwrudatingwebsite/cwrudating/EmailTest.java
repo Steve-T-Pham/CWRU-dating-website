@@ -1,4 +1,4 @@
-package com.cwrudatingwebsite.cwrudating;
+/*package com.cwrudatingwebsite.cwrudating;
  
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -28,4 +28,4 @@ class EmailTest {
     javaMailSender.sendSimpleMessage("stevesmessagebot@gmail.com", "test", "test");
 
   }
-}
+}*/
