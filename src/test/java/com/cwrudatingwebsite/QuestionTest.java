@@ -9,20 +9,18 @@ import com.cwrudatingwebsite.Question;
 
 public class QuestionTest {
 
-    static Question aQuestion = new Question(null, null);
+    static Question aQuestion = new Question("beans");
 
     public static void setupClass(){
-        aQuestion.setQuestion("Hi");
-        aQuestion.setOptions(null);
-        aQuestion.setAnswer("1");
+        aQuestion.setAnswer("cake");
     }
 
     @Test
     public void testGetQuestion(){
         //Expected variable , actual variable , compare
-    Question hi = new Question("What is your major", null);
-    String expected = "What is your major";
-    String actual = hi.getQuestion();
+    Question hi = new Question("beans");
+    String expected = "beans";
+    String actual = hi.getAnswer();
     assertEquals(expected,actual);
     }
 

@@ -11,23 +11,23 @@ class QuestionnaireTest {
     @Test
     void getQuestionnaireTest(){
     Question [] hi = new Question[10];
-    hi[0] = new Question("What is your favorite food?",null);
-    hi[1] = new Question("What is your favorite music?",null);
-    hi[2] = new Question("What is your favorite professor?",null);
+    hi[0] = new Question("cake");
+    hi[1] = new Question("orange");
+    hi[2] = new Question("ice cream");
     Questionnaire one = new Questionnaire (hi);
     assertEquals(hi,one.getQuestionnaire());
     }
     @Test
     void setQuestionnaireTest(){
     Question [] hi = new Question[10];
-    hi[0] = new Question("What is your favorite food?",null);
-    hi[1] = new Question("What is your favorite music?",null);
-    hi[2] = new Question("What is your favorite professor?",null);
+    hi[0] = new Question("mochi");
+    hi[1] = new Question("vanilla");
+    hi[2] = new Question("pasta");
     Questionnaire one = new Questionnaire (hi);
     Question [] hello = new Question[10];
-    hello[0] = new Question("What is your favorite brand?",null);
-    hello[1] = new Question("What is your favorite city?",null);
-    hello[2] = new Question("What is your favorite book?",null);
+    hello[0] = new Question("cookie");
+    hello[1] = new Question("chocolate");
+    hello[2] = new Question("dumpling");
     one.setQuestionnaire(hello);
     assertEquals(hello,one.getQuestionnaire());
     }
