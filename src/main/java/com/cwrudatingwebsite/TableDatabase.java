@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class TableDatabase {
     private final String url = "jdbc:postgresql://localhost/CWRU Dating Website";
     private final String user = "postgres";
-    private final String password = "admin";
+    private final String password = "password";
     private ResultSet resultSet = null;
 
     public TableDatabase() {
