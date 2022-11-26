@@ -22,7 +22,7 @@ public class Cwrudating {
     @Autowired
     private AccountRepository repo;
 
-
+    //test method *has no functionality atm*
     @RequestMapping("/resource")
     public void home(@AuthenticationPrincipal Account user) {
         System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
@@ -33,14 +33,6 @@ public class Cwrudating {
     public ModelAndView firstPage(){
         return new ModelAndView("login");
     }
-
-    /*returns information from login form and redirects to dashboard page
-    @PostMapping("/processForm")
-    public ModelAndView processForm(@ModelAttribute Account user, Model model){
-        model.addAttribute("username", user.getUsername());
-        return new ModelAndView("dashboard");
-    }
-    */
     
     //renders the register page
     @RequestMapping("/register")
@@ -66,23 +58,16 @@ public class Cwrudating {
         return new ModelAndView("questionnaire");
     }
 
+    //renders dashboard page
     @GetMapping("/dashboard")
     public ModelAndView fourthPage(){
         return new ModelAndView("dashboard");
     }
 
+    //renders profile page
     @GetMapping("/profile")
     public ModelAndView fifthPage(@ModelAttribute Account account, Model model){
         model.addAttribute("account", account);
         return new ModelAndView("profile");
     }
-
-    /* 
-    //broken at the moment *for showing all members*
-    @GetMapping("/list_accounts")
-    public ModelAndView viewAccounts(Model model){
-        List<Account> listAccount = repo.findAll();
-        model.addAttribute("listAccount", listAccount);
-        return new ModelAndView("accounts");
-    }*/
 }

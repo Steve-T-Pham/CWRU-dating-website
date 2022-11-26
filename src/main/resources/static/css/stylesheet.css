@@ -270,16 +270,43 @@ a{
 }
 
 .profile-account-info{
+    justify-content: center;
+    align-items: center;
     display: inline-block;
     font-family: "Poppins";
     margin-left: 50px;
-    font-size: 40px;
 }
 
-.profile-picture{
-    display: inline-block;
-    height: 250px;
-    width: 250px;
-    background-color: black;
+
+#upload-img{
+    border: 0;  
+    display: block;
+    margin: 15px;
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 16px;
+    color: white;
+    background: linear-gradient(to bottom right, rgb(140, 140, 230), pink);
+    background-color: linear-gradient(to bottom right, rgb(140, 140, 230), pink);
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    font-family: "Poppins";
+}
+
+.placeholder-img{
+    background-size: cover;
+    margin-left: 37px;
+    height: 150px;
+    width: 150px;
+    background: linear-gradient(to bottom right, rgb(140, 140, 230), pink);
+    background-color: linear-gradient(to bottom right, rgb(140, 140, 230), pink);
     border-radius: 50%;
+    border: 2px solid linear-gradient(to bottom right, rgb(140, 140, 230), pink);
+}
+
+.loggedin-username{
+    font-size: 15px;
 }
