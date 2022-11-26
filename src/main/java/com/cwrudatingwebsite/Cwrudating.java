@@ -1,6 +1,10 @@
 package com.cwrudatingwebsite;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +22,15 @@ public class Cwrudating {
     @Autowired
     private AccountRepository repo;
 
+
+    @RequestMapping("/resource")
+    public void home(@AuthenticationPrincipal Account user) {
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    }
+
     //renders login page
     @GetMapping("")
-    public ModelAndView firstPage(@ModelAttribute Account account, Model model){
-        model.addAttribute("username", repo.findByUsername(account.getUsername()));
+    public ModelAndView firstPage(){
         return new ModelAndView("login");
     }
 
@@ -58,8 +67,7 @@ public class Cwrudating {
     }
 
     @GetMapping("/dashboard")
-    public ModelAndView fourthPage(@ModelAttribute Account account, Model model){
-        model.addAttribute("account", account);
+    public ModelAndView fourthPage(){
         return new ModelAndView("dashboard");
     }
 

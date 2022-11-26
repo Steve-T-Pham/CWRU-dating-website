@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().loginPage("/login");
         http.authorizeRequests()
-            .antMatchers("/dashboard").authenticated()
+            .antMatchers("/", "/dashboard").authenticated()
             .anyRequest().permitAll()
             .and()
             .formLogin()
@@ -57,6 +57,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .logout().logoutSuccessUrl("/").permitAll();
     }
-     
-     
 }
