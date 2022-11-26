@@ -21,7 +21,9 @@ public class AccountTest {
     @Test
     public void testGetUsername(){
         //Expected variable , actual variable , compare
-
+        aAccount.setUsername("suchi");
+        aAccount.setPassword("1234");
+        aAccount.setEmail("srd137@case.edu");
         String expected = "suchi";
         String actual = aAccount.getUsername();
     
@@ -31,6 +33,9 @@ public class AccountTest {
     @Test
     public void testGetPassword(){
         //Expected variable , actual variable , compare
+        aAccount.setUsername("suchi");
+        aAccount.setPassword("1234");
+        aAccount.setEmail("srd137@case.edu");
         String expected = "1234";
         String actual = aAccount.getPassword();
     
@@ -41,7 +46,10 @@ public class AccountTest {
     @Test
     public void testGetEmail(){
         //Expected variable , actual variable , compare
-        String expected = "srd137@case,edu";
+        aAccount.setUsername("suchi");
+        aAccount.setPassword("1234");
+        aAccount.setEmail("srd137@case.edu");
+        String expected = "srd137@case.edu";
         String actual = aAccount.getEmail();
     
         assertEquals(expected,actual);
