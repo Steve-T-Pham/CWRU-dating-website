@@ -1,30 +1,32 @@
 package com.cwrudatingwebsite;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.beans.Transient;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import com.cwrudatingwebsite.Questionnaire;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class QuestionnaireTest {
-    
-    static Questionnaire hi= new Questionnaire();
-
-    public static void setupClass(){
-        hi.setUsername("wendy");
-        hi.setQuestion_one("Spring");
-        hi.setQuestion_two("bet");
-    }
-      
     @Test
-    public void getUsernameTest(){
-        //Expected variable , actual variable , compare
-        hi.setUsername("wendy");
-        hi.setQuestion_one("Spring");
-        hi.setQuestion_two("bet");
-        String expected = "wendy";
-        String actual = hi.getUsername();
-    
-        assertEquals(expected,actual);
+    public void testQuestionnaire()
+    {
+        Questionnaire questionnaire=new Questionnaire("UserName","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelveth","thirteenth");
+        Questionnaire nulQuestionnaire=new Questionnaire();
+        questionnaire.setID(1L);
+        Assertions.assertEquals(questionnaire.getID(),1L);
+        Assertions.assertEquals(questionnaire.getQuestion_one(),"first");
+        Assertions.assertEquals(questionnaire.getQuestion_two(),"second");
+        Assertions.assertEquals(questionnaire.getQuestion_three(),"third");
+        Assertions.assertEquals(questionnaire.getQuestion_four(),"fourth");
+        Assertions.assertEquals(questionnaire.getQuestion_five(),"fifth");
+        Assertions.assertEquals(questionnaire.getQuestion_six(),"sixth");
+        Assertions.assertEquals(questionnaire.getQuestion_seven(),"seventh");
+        Assertions.assertEquals(questionnaire.getQuestion_eight(),"eighth");
+        Assertions.assertEquals(questionnaire.getQuestion_nine(),"ninth");
+        Assertions.assertEquals(questionnaire.getQuestion_ten(),"tenth");
+        Assertions.assertEquals(questionnaire.getQuestion_eleven(),"eleventh");
+        Assertions.assertEquals(questionnaire.getQuestion_twelve(),"twelveth");
+        Assertions.assertEquals(questionnaire.getQuestion_thirteen(),"thirteenth");
+        Assertions.assertEquals(questionnaire.getUsername(),"UserName");
     }
 
-    }
-
+}

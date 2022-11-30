@@ -1,24 +1,18 @@
 package com.cwrudatingwebsite;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.beans.Transient;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProfileTest {
-
     @Test
-    void getBioTest(){
-        Profile a = new Profile("I like cats.");
-        assertEquals("I like cats.", a.getBio());
+    public void testProfile()
+    {
+        Profile profile=new Profile("Bio");
+        profile.setBio("newBio");
+        Assertions.assertEquals(profile.getBio(),"newBio");
     }
-    void setBioTest(){
-        Profile b = new Profile("I like dogs.");
-        assertEquals("I like dogs.", b.getBio());
-        b.setBio("I actually like cats better.");
-        assertEquals("I actually like cats better.", b.getBio());
-        
-    }
-    
+
+
 }
