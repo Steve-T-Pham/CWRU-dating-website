@@ -32,6 +32,9 @@ public class Account {
     @Column(nullable = false, length = 45)
     String last_name = null;
 
+    @Column(nullable = true, length = 15)
+    String role = "regular";
+
     //String first_name, String last_name
     public Account(String username, String password, String email, String first_name, String last_name)  {
         this.setUsername(username);
@@ -101,4 +104,13 @@ public class Account {
     public void setLastName(String last_name) {
         this.last_name = last_name;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 }

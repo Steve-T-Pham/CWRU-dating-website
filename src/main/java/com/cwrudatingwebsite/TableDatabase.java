@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.io.File;
+import java.io.InputStream;
+import java.io.FileInputStream;
 
 public class TableDatabase {
     private final String url = "jdbc:postgresql://localhost/CWRU Dating Website";
@@ -127,19 +130,6 @@ public class TableDatabase {
         }
     }
 
-    public void insertQuestionnaire(Questionnaire questionnaire) {
-        //insert into sql
-    }
-    
-    public boolean deleteQuestionnaire(Questionnaire questionnaire, String tablename) {
-        return false;
-    }
-
-    public void editQuestionnaire(Questionnaire questionnaire, String password, String tablename) {
-        //edit sql
-    }
-
-
     public String readAccount(String string, Account account) {
         switch(string) {
             case "username":
@@ -240,11 +230,50 @@ public class TableDatabase {
         return "No such field exists";
     }
 
+    public void setImage(String obj, Account account) {
+
+        File file = new File(obj);
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+        PreparedStatement ps = conn.prepareStatement("UPDATE account set picture = ? WHERE username = ?;");) {
+        FileInputStream fis = new FileInputStream(file);
+        ps.setBinaryStream(1, fis, file.length());
+        ps.setString(2, account.getUsername());
+        ps.executeUpdate();
+        ps.close();
+        fis.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getImage(Account account) {
+    try (Connection con = DriverManager.getConnection(url, user, password);
+    PreparedStatement ps = con.prepareStatement("SELECT picture FROM account WHERE username = ?;");) {
+        ps.setString(1, account.getUsername());
+        ResultSet rs = ps.executeQuery();
+        if (rs != null) {
+            while (rs.next()) {
+                //InputStream imgBytes;
+                // use the data in some way here
+                System.out.println("Generated: " + 1); //imgBytes
+            }
+            rs.close();
+         }
+        ps.close();
+        }   
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         Account person1 = new Account("lsn19", "temp", "lsn19@case.edu", "Lara", "Nakisli");
         Account person2 = new Account("mrk4", "tart", "mrk4@case.edu", "Mark", "Kelvin");
         TableDatabase one = new TableDatabase();
-       one.insertAccount(person1);
+       //one.insertAccount(person1);
+       //one.setImage("/Users/laranakisli/Desktop/image.jpg", person1);
+       //one.getImage(person1);
        //one.insertAccount(person2);
         //one.editAccountPassword(person1, "poptarts");
         //one.deleteAccount(person1);
