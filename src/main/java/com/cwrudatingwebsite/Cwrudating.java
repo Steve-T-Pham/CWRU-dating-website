@@ -57,7 +57,22 @@ public class Cwrudating {
      public ModelAndView thirdPage(Model model){
          Questionnaire questionnaire = new Questionnaire();
          model.addAttribute("questionnaire", questionnaire);
-         List<String> listMajor = Arrays.asList("Developer", "Tester", "Architect");
+         List<String> listMajor = Arrays.asList("Accountancy", "Accounting", "Architect", "Aerospace Engineering", 
+         "Ancient Near Eastern and Egyptian Studies", "Anesthesia", "Anthropology", "Applied Mathematics", 
+         "Art Education", "Art History and Museum Studies", "Art History", "Asian Studies", "Astronomy", 
+         "Biochemistry", "Bioethics and Medical Humanities", "Bioethics", "Biology", 
+         "Biomedical and Health Informatics", "Business Administration", "Business Analytics and Intelligence", 
+         "Biomedical Engineering", "Chemical Biology", "Chemistry", "Chinese", "Civil Engineering", "Classics", 
+         "Cognitive Science", "Computer Engineering", "Dance", "Computer Science", "Dance", 
+         "Data Science and Analytics", "Economics", "Electrical Engineering", "Engineering Physics", "English", 
+         "Evolutionary Biology", "Environmental Geology", "Environmental Studies", "French", "General Engineering",
+         "Geological Science", "German", "Gerontological Studies", "History and Philosophy of Science", 
+         "International Studies", "Japanese Studies", "Material Science and Engineering", "Mathematics and Physics", 
+         "Mathematics", "Military Ethics", "Music Education", "Music", "Natural Sciences", "Neuroscience", "Nursing", 
+         "Nutrition", "Nutritional Biochemistry and Metabolism", "Origins Science", "Philosophy", "Physics", 
+         "Political Science", "Polymer Science and Engineering", "Religious Studies", "Sociology", "Spanish", "Statistics", 
+         "Systems and Control Engineering", "Systems Biology", "Teacher Education", "Theater Arts", "Women's and Gender Studies", 
+         "World Literature", "Others");
         model.addAttribute("listMajor", listMajor);
          return new ModelAndView("questionnaire");
      }
