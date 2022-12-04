@@ -1,6 +1,10 @@
 package com.cwrudatingwebsite;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import java.util.*;
 
 
 
@@ -18,13 +23,18 @@ public class Cwrudating {
     @Autowired
     private AccountRepository repo;
 
-    //renders login page
-    @GetMapping("/login")
-    public ModelAndView firstPage(@ModelAttribute Account account, Model model){
-        model.addAttribute("username", account.getUsername());
-        return new ModelAndView("login");
+    //test method *has no functionality atm*
+    @RequestMapping("/resource")
+    public void home(@AuthenticationPrincipal Account user) {
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 
+    //renders login page
+    @GetMapping("")
+    public ModelAndView firstPage(){
+        return new ModelAndView("login");
+    }
+    
     //renders the register page
     @RequestMapping("/register")
     public ModelAndView secondPage(Model model){
@@ -42,30 +52,31 @@ public class Cwrudating {
         return new ModelAndView("login");
     }
 
-    //renders the questionnaire page
-    @RequestMapping("/questionnaire")
-    public ModelAndView thirdPage(){
-        return new ModelAndView("questionnaire");
-    }
+     //renders the questionnaire page
+     @RequestMapping("/questionnaire")
+     public ModelAndView thirdPage(Model model){
+         Questionnaire questionnaire = new Questionnaire();
+         model.addAttribute("questionnaire", questionnaire);
+         List<String> listMajor = Arrays.asList("Developer", "Tester", "Architect");
+        model.addAttribute("listMajor", listMajor);
+         return new ModelAndView("questionnaire");
+     }
+ 
+     @PostMapping("/process_questionnaire")
+     public ModelAndView processQuestionnaire(@ModelAttribute Questionnaire questionnaire){
+         return new ModelAndView("test");
+     }
 
+    //renders dashboard page
     @GetMapping("/dashboard")
-    public ModelAndView fourthPage(@ModelAttribute Account account, Model model){
-        model.addAttribute("account", account);
+    public ModelAndView fourthPage(){
         return new ModelAndView("dashboard");
     }
 
+    //renders profile page
     @GetMapping("/profile")
     public ModelAndView fifthPage(@ModelAttribute Account account, Model model){
         model.addAttribute("account", account);
         return new ModelAndView("profile");
     }
-
-    /* 
-    //broken at the moment *for showing all members*
-    @GetMapping("/list_accounts")
-    public ModelAndView viewAccounts(Model model){
-        List<Account> listAccount = repo.findAll();
-        model.addAttribute("listAccount", listAccount);
-        return new ModelAndView("accounts");
-    }*/
 }

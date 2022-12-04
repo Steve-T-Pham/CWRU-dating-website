@@ -36,7 +36,7 @@ public class TableDatabase {
 
             // Print the ID of the inserted row.
             while (resultSet.next()) {
-                System.out.println("Generated: " + resultSet.getString(1)); //Generated getUsername()
+                System.out.println("Generated: " + resultSet.getString(2)); //Generated getUsername()
             }
         }
         // Handle any errors that may have occurred.
@@ -254,9 +254,8 @@ public class TableDatabase {
         ResultSet rs = ps.executeQuery();
         if (rs != null) {
             while (rs.next()) {
-                //InputStream imgBytes;
-                // use the data in some way here
-                System.out.println("Generated: " + 1); //imgBytes
+                byte[] imgBytes = rs.getBytes(1);
+                System.out.println("Generated: " + imgBytes);
             }
             rs.close();
          }
@@ -268,12 +267,12 @@ public class TableDatabase {
     }
 
     public static void main(String[] args) {
-        Account person1 = new Account("lsn19", "temp", "lsn19@case.edu", "Lara", "Nakisli");
+        Account person1 = new Account("lsn19", "admin19!", "lsn19@case.edu", "Lara", "Nakisli");
         Account person2 = new Account("mrk4", "tart", "mrk4@case.edu", "Mark", "Kelvin");
         TableDatabase one = new TableDatabase();
        //one.insertAccount(person1);
-       //one.setImage("/Users/laranakisli/Desktop/image.jpg", person1);
-       //one.getImage(person1);
+       //one.setImage("/Users/laranakisli/Downloads/IMG_0035.jpg", person1);
+       one.getImage(person1);
        //one.insertAccount(person2);
         //one.editAccountPassword(person1, "poptarts");
         //one.deleteAccount(person1);
