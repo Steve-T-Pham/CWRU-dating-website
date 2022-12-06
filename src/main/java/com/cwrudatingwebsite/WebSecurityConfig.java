@@ -55,6 +55,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/dashboard")
                 .permitAll()
             .and()
-            .logout().logoutSuccessUrl("/").permitAll();
+            .logout().logoutSuccessUrl("/login").permitAll();
     }
 }

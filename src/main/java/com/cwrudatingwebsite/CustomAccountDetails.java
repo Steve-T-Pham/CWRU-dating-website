@@ -27,7 +27,11 @@ public class CustomAccountDetails implements UserDetails {
     public String getUsername() {
         return account.getUsername();
     }
- 
+
+    public String getBio(){
+        return account.getBio();
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;

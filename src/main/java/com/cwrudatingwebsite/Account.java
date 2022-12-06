@@ -35,6 +35,9 @@ public class Account {
     @Column(nullable = true, length = 15)
     String role = "regular";
 
+    @Column(nullable = true, length = 255)
+    String bio = null;
+
     //String first_name, String last_name
     public Account(String username, String password, String email, String first_name, String last_name)  {
         this.setUsername(username);
@@ -50,6 +53,7 @@ public class Account {
         this.setEmail(null);
         this.setFirstName(null);
         this.setLastName(null);
+        this.setBio(null);
     }
 
     //------- Getters and Setters -------
@@ -113,4 +117,11 @@ public class Account {
         this.role = role;
     }
 
+    public String getBio(){
+        return bio;
+    }
+
+    public void setBio(String bio){
+        this.bio = bio;
+    }
 }
