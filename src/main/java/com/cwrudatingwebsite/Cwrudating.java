@@ -2,6 +2,7 @@ package com.cwrudatingwebsite;
 
 import java.util.Map;
 
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -128,5 +129,10 @@ public class Cwrudating {
 
         return "profile";
     }
+     //renders the register page
+     @RequestMapping("/matches")
+     public ModelAndView sixthPage(){
+         return new ModelAndView("matches");
+     }
     
 }
