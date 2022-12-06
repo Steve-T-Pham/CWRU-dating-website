@@ -12,7 +12,7 @@ import java.io.FileInputStream;
 public class TableDatabase {
     private final String url = "jdbc:postgresql://localhost/CWRU Dating Website";
     private final String user = "postgres";
-    private final String password = "root";
+    private final String password = "generalPho!";
     private ResultSet resultSet = null;
 
     public TableDatabase() {
@@ -229,7 +229,7 @@ public class TableDatabase {
         }
         return "No such field exists";
     }
-
+/* 
     public void setImage(String obj, Account account) {
 
         File file = new File(obj);
@@ -265,14 +265,14 @@ public class TableDatabase {
             e.printStackTrace();
         }
     }
-
+*/
     public static void main(String[] args) {
         Account person1 = new Account("lsn19", "admin19!", "lsn19@case.edu", "Lara", "Nakisli");
         Account person2 = new Account("mrk4", "tart", "mrk4@case.edu", "Mark", "Kelvin");
         TableDatabase one = new TableDatabase();
        //one.insertAccount(person1);
        //one.setImage("/Users/laranakisli/Downloads/IMG_0035.jpg", person1);
-       one.getImage(person1);
+      // one.getImage(person1);
        //one.insertAccount(person2);
         //one.editAccountPassword(person1, "poptarts");
         //one.deleteAccount(person1);
