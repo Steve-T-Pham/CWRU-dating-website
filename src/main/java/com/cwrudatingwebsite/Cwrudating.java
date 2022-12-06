@@ -55,8 +55,8 @@ public class Cwrudating {
      //renders the questionnaire page
      @RequestMapping("/questionnaire")
      public ModelAndView thirdPage(Model model){
-         Questionnaire questionnaire = new Questionnaire();
-         model.addAttribute("questionnaire", questionnaire);
+         personalQuestionnaire personalQuestionnaire = new personalQuestionnaire();
+         model.addAttribute("personalQuestionnaire", personalQuestionnaire);
          List<String> listMajor = Arrays.asList("Accountancy", "Accounting", "Architect", "Aerospace Engineering", 
          "Ancient Near Eastern and Egyptian Studies", "Anesthesia", "Anthropology", "Applied Mathematics", 
          "Art Education", "Art History and Museum Studies", "Art History", "Asian Studies", "Astronomy", 
@@ -78,7 +78,7 @@ public class Cwrudating {
      }
  
      @PostMapping("/process_questionnaire")
-     public ModelAndView processQuestionnaire(@ModelAttribute Questionnaire questionnaire){
+     public ModelAndView processQuestionnaire(@ModelAttribute personalQuestionnaire personalQuestionnaire){
          return new ModelAndView("test");
      }
 
