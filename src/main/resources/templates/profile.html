@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <html xmlns:th="https//www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+</head>
+<body>
+    <div class="nav-bar">
+        <a class="active" href="dashboard">Home</a>
+        <a href="profile">Profile</a>
+<<<<<<< HEAD
+=======
+        <a href="questionnaire">Questionnaire</a>
+>>>>>>> a0629829573fd63353b2e321032461f4b7ce136a
+        <a href="login">Logout</a>
+        <div class="nav-right">
+            <a href="https://github.com/Steve-T-Pham/CWRU-dating-website" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+        </div>
+    </div>
+    <div class="profile-wrapper">
+<<<<<<< HEAD
+        <div class="profile-picture"></div>
+        <div class="profile-account-info">
+            <div th:text="${#request.userPrincipal.principal.username}" class="profile-username"></div>
+            <div th:text="${#request.userPrincipal.principal.fullName}" class="profile-fullname"></div>
+        </div>
+    </div>
+</body>
+=======
+        <script>
+            var loadFile = function(event) {
+                var image = document.getElementById('output');
+                image.src = URL.createObjectURL(event.target.files[0]);
+            };
+        </script>
+        <div class="profile-picture"><img id="output" width="200" /></div>
+        <img src="https://t3.ftcdn.net/jpg/05/00/54/28/360_F_500542898_LpYSy4RGAi95aDim3TLtSgCNUxNlOlcM.jpg" class="placeholder-img">
+        <input type="file"  accept="image/*" name="image" id="file" style="display: none" onchange="loadFile(event)">
+        <p><label for="file" style="cursor: pointer" id="upload-img">Upload Image 🖼️</label></p>
+        <div class="profile-account-info">
+            <div class="profile-username">
+                Username:
+            </div>
+            <div th:text="${#request.userPrincipal.principal.username}"></div>
+            <div class="profile-username">
+                Full Name:
+            </div>
+            <div th:text="${#request.userPrincipal.principal.fullName}"></div>
+            <div class="profile-username"> 
+                Bio:
+            </div>
+        </div>
+    </div>
+</body>
+>>>>>>> a0629829573fd63353b2e321032461f4b7ce136a

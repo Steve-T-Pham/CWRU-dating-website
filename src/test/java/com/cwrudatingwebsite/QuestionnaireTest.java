@@ -10,16 +10,16 @@ class QuestionnaireTest {
 
     public static void setupClass(){
         hi.setUsername("wendy");
-        hi.setQuestion_one("Spring");
-        hi.setQuestion_two("bet");
+        hi.setQ1_A("Spring");
+        hi.setQ2_A("bet");
     }
       
     @Test
     public void getUsernameTest(){
         //Expected variable , actual variable , compare
         hi.setUsername("wendy");
-        hi.setQuestion_one("Spring");
-        hi.setQuestion_two("bet");
+        hi.setQ1_A("Spring");
+        hi.setQ2_A("bet");
         String expected = "wendy";
         String actual = hi.getUsername();
     

@@ -23,8 +23,7 @@ public class AccountRepositoryTest {
 	
 	@Autowired
 	private AccountRepository repo;
-	
-	
+
 	@Test
 	public void testCreateAccount() {
 		Account testAccount = new Account();
