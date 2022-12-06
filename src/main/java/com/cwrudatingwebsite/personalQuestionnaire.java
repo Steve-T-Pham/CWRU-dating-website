@@ -53,13 +53,9 @@ public class personalQuestionnaire { //all the question objects in this question
     @Column(nullable = false, length = 45)
     String q11_A;
 
-    @Column(nullable = false, length = 45)
-    String q12_A;
+  
 
-    @Column(nullable = false, length = 45)
-    String q13_A;
-
-    public personalQuestionnaire(String username_1, String g, String one, String two, String three, String four, String five, String six, String seven, String eight, String nine, String ten, String eleven, String twelve, String thirteen)
+    public personalQuestionnaire(String username_1, String g, String one, String two, String three, String four, String five, String six, String seven, String eight, String nine, String ten, String eleven)
     {
         //set each question to corresponding question that will have the stored answer to a question object
       
@@ -76,8 +72,6 @@ public class personalQuestionnaire { //all the question objects in this question
         this.setQ9_A(nine);
         this.setQ10_A(ten);
         this.setQ11_A(eleven);
-        this.setQ12_A(twelve);
-        this.setQ13_A(thirteen);
         
 
     }
@@ -95,8 +89,6 @@ public class personalQuestionnaire { //all the question objects in this question
         this.setQ9_A(null);
         this.setQ10_A(null);
         this.setQ11_A(null);
-        this.setQ12_A(null);
-        this.setQ13_A(null);
         
     }
     //getters and setters
@@ -186,18 +178,7 @@ public class personalQuestionnaire { //all the question objects in this question
     public void setQ11_A(String eleven_A){
         this.q11_A = eleven_A;
     }
-    public String getQ12_A(){
-        return q12_A;
-    }
-    public void setQ12_A(String twelve_A){
-        this.q12_A = twelve_A;
-    }
-    public String getQ13_A(){
-        return q13_A;
-    }
-    public void setQ13_A(String thirteen_A){
-        this.q13_A = thirteen_A;
-    }
+    
   
    
 }
