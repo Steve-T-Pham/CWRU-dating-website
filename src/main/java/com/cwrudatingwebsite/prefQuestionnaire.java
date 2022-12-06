@@ -9,15 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "personalQuestionnaire")
-public class personalQuestionnaire { //all the question objects in this questionnaire
+@Table(name = "prefQuestionnaire")
+public class prefQuestionnaire { //all the question objects in this questionnaire
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Column(nullable = false, unique = true, length = 45)
     String username = null; //username
     @Column(nullable = false, length = 45)
-    String gender= null; //user's gender
+    String pGender= null; //preferred gender
 
     @Column(nullable = false, length = 45)
     String q1_A = null;
@@ -52,14 +52,14 @@ public class personalQuestionnaire { //all the question objects in this question
     @Column(nullable = false, length = 45)
     String q11_A;
 
-  
+    
 
-    public personalQuestionnaire(String username_1, String g, String one, String two, String three, String four, String five, String six, String seven, String eight, String nine, String ten, String eleven)
+    public prefQuestionnaire(String username_1, String pGend, String one, String two, String three, String four, String five, String six, String seven, String eight, String nine, String ten, String eleven)
     {
         //set each question to corresponding question that will have the stored answer to a question object
       
         this.setUsername(username_1);
-        this.setGender(g);
+        this.setGender(pGend);
         this.setQ1_A(one);
         this.setQ2_A(two);
         this.setQ3_A(three);
@@ -74,7 +74,7 @@ public class personalQuestionnaire { //all the question objects in this question
         
 
     }
-    public personalQuestionnaire(){
+    public prefQuestionnaire(){
         this.setUsername(null);
         this.setGender(null);
         this.setQ1_A(null);
@@ -104,11 +104,11 @@ public class personalQuestionnaire { //all the question objects in this question
         this.username = newUsername;
     }
     public String getGender(){
-        return gender;
+        return pGender;
     }
-    public void setGender(String gend)
+    public void setGender(String prefG)
     {
-        this.gender = gend;
+        this.pGender = prefG;
     }
     //getting Question #'s answers and setting them (quite a lot of redundant code but it works)
     public String getQ1_A(){
@@ -178,6 +178,5 @@ public class personalQuestionnaire { //all the question objects in this question
         this.q11_A = eleven_A;
     }
     
-  
    
 }
