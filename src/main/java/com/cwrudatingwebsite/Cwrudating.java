@@ -50,7 +50,7 @@ public class Cwrudating {
         model.addAttribute("account", new Account(null, null, null, null, null));
         return new ModelAndView("register");
     }
-    
+
     //password encryption
     @PostMapping("/process_register")
     public ModelAndView processRegisteration(@ModelAttribute Account account){
@@ -61,6 +61,24 @@ public class Cwrudating {
         return new ModelAndView("login");
     }
 
+     //renders the matches page
+     @RequestMapping("/matches")
+     public ModelAndView sixthPage(){
+         return new ModelAndView("matches");
+     }
+
+    @RequestMapping("/prefQuestionnaire")
+    public ModelAndView hiddenPage(Model model){
+        prefQuestionnaire prefQuestionnaire = new prefQuestionnaire();
+        model.addAttribute("prefQuestionnaire", prefQuestionnaire);
+        return new ModelAndView("prefQuestionnaire");
+    }
+
+    @PostMapping("/process_prefquestionnaire")
+    public ModelAndView processPrefQuestionnaire(@ModelAttribute prefQuestionnaire prefQuestionnaire){
+        return new ModelAndView("matches");
+    }
+    
      //renders the questionnaire page
      @RequestMapping("/questionnaire")
      public ModelAndView thirdPage(Model model){
@@ -88,9 +106,10 @@ public class Cwrudating {
  
      @PostMapping("/process_questionnaire")
      public ModelAndView processQuestionnaire(@ModelAttribute personalQuestionnaire personalQuestionnaire){
-         return new ModelAndView("test");
+         return new ModelAndView("prefQuestionnaire");
      }
-
+    
+     
     //renders dashboard page
     @GetMapping("/dashboard")
     public ModelAndView fourthPage(Model model){
@@ -129,10 +148,5 @@ public class Cwrudating {
 
         return "profile";
     }
-     //renders the register page
-     @RequestMapping("/matches")
-     public ModelAndView sixthPage(){
-         return new ModelAndView("matches");
-     }
     
 }
