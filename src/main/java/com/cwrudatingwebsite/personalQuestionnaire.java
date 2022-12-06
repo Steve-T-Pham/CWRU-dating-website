@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class personalQuestionnaire { //all the question objects in this questionnaire
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     Long id;
     @Column(nullable = false, unique = true, length = 45)
     String username = null; //username

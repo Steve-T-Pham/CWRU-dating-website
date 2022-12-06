@@ -3,6 +3,8 @@ package com.cwrudatingwebsite;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,7 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.*;
 
@@ -23,18 +28,21 @@ public class Cwrudating {
     @Autowired
     private AccountRepository repo;
 
-    //test method *has no functionality atm*
-    @RequestMapping("/resource")
-    public void home(@AuthenticationPrincipal Account user) {
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-    }
-
-    //renders login page
-    @GetMapping("")
+    @GetMapping("/login")
     public ModelAndView firstPage(){
         return new ModelAndView("login");
     }
-    
+
+    @PostMapping("/login")
+    public ModelAndView login(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Account account = repo.findByUsername(username);
+
+        model.addAttribute("account", account);
+        return new ModelAndView("dashboard");
+    }
+
     //renders the register page
     @RequestMapping("/register")
     public ModelAndView secondPage(Model model){
@@ -84,14 +92,41 @@ public class Cwrudating {
 
     //renders dashboard page
     @GetMapping("/dashboard")
-    public ModelAndView fourthPage(){
+    public ModelAndView fourthPage(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Account account = repo.findByUsername(username);
+
+        model.addAttribute("account", account);
         return new ModelAndView("dashboard");
     }
 
     //renders profile page
     @GetMapping("/profile")
-    public ModelAndView fifthPage(@ModelAttribute Account account, Model model){
+    public ModelAndView fifthPage(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Account account = repo.findByUsername(username);
+
         model.addAttribute("account", account);
+        model.addAttribute("bio", account.getBio());
         return new ModelAndView("profile");
     }
+
+    @RequestMapping(value = "/update-bio", method = RequestMethod.POST) 
+    public String updateBio(@RequestParam("bio") String bio, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        // Get the current user's account
+        Account account = repo.findByUsername(username);
+        model.addAttribute("account", account);
+        // Update the bio
+        account.setBio(bio);
+
+        // Save the updated account
+        repo.save(account);
+
+        return "profile";
+    }
+    
 }
