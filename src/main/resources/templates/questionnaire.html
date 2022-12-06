@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Questionnaire</title>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
 
@@ -18,7 +19,7 @@
     </div>
     
     <div class="questionnaire-wrapper">
-        <form th:action="@{/process_questionnaire}" method="post" th:object="${questionnaire}">
+        <form th:action="@{/process_questionnaire}" method="post" th:object="${personalQuestionnaire}">
             
             <label> Major:</label>
                 <select th:field="*{q1_A}"> 
@@ -27,16 +28,6 @@
             </label><br><br> 
             <label for="age">Age:</label>
             <input type="number" name="age" min="18"><br><br>
-
-            <label for="sex">Sex:
-                <select name="sex">
-                    <option value="" disabled selected>Select..</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Intersex">Intersex</option>
-                    <option value="Others">Others</option>
-                </select>
-            </label><br><br>
 
             <label for="gender">Gender:
                 <select name="gender">
@@ -49,165 +40,144 @@
                 </select>
             </label><br><br>
 
-            <!--Season question-->
-            <label for="season">1. What is your favorite season?</label><br>
-            <input type="radio" name="season" value="Spring" id="seasonq1">
-            <label for="seasonq1">Spring</label><br>
-            <input type="radio" name="season" value="Summer" id="seasonq2">
-            <label for="seasonq2">Summer</label><br>
-            <input type="radio" name="season" value="Fall" id="seasonq3">
-            <label for="seasonq3">Fall</label><br>
-            <input type="radio" name="season" value="Winter" id="seasonq4">
-            <label for="seasonq4">Winter</label><br><br>
-
-            <!-- Favorite subject-->
-            <label for="subject">2. What is your favorite subject?</label><br>
-            <input type="radio" name="subject" value="Math" id="subjectq1">
-            <label for="subjectq1">Math</label><br>
-            <input type="radio" name="subject" value="English" id="subjectq2">
-            <label for="subjectq2">English</label><br>
-            <input type="radio" name="subject" value="Science" id="subjectq3">
-            <label for="subjectq3">Science</label><br>
-            <input type="radio" name="subject" value="History" id="subjectq4">
-            <label for="subjectq4">History</label><br><br>
 
             <!-- Slang-->
-            <label for="slang">3. What is your gen z slang?</label><br>
-            <input type="radio" name="slang" value="Bet" id="slangq1">
+            <label for="slang">1. What is your gen z slang?</label><br>
+            <input type="radio" name="slang" value="Bet" id="slangq1" th:field="*{q2_A}">
             <label for="slangq1">Bet</label><br>
-            <input type="radio" name="slang" value="Nocap" id="slangq2">
+            <input type="radio" name="slang" value="Nocap" id="slangq2" th:field="*{q2_A}">
             <label for="slangq2">No cap</label><br>
-            <input type="radio" name="slang" value="Hitsdifferent" id="slangq3">
+            <input type="radio" name="slang" value="Hitsdifferent" id="slangq3" th:field="*{q2_A}">
             <label for="slangq3">Hits different</label><br>
-            <input type="radio" name="slang" value="Vibing" id="slangq4">
+            <input type="radio" name="slang" value="Vibing" id="slangq4" th:field="*{q2_A}">
             <label for="slangq4">Vibing</label><br>
-            <input type="radio" name="slang" value="lowkeyhighkey" id="slangq5">
+            <input type="radio" name="slang" value="lowkeyhighkey" id="slangq5" th:field="*{q2_A}">
             <label for="slangq5">Low-key/High-key</label><br><br>
 
             <!--Music genre-->
-            <label for="music">4. What is your favorite music genre?</label><br>
-            <input type="radio" name="music" value="Pop" id="musicq1">
+            <label for="music">2. What is your favorite music genre?</label><br>
+            <input type="radio" name="music" value="Pop" id="musicq1" th:field="*{q3_A}">
             <label for="musicq1">Pop</label><br>
-            <input type="radio" name="music" value="Country" id="musicq2">
+            <input type="radio" name="music" value="Country" id="musicq2" th:field="*{q3_A}">
             <label for="musicq2">Country</label><br>
-            <input type="radio" name="music" value="Hip-Hop" id="musicq3">
+            <input type="radio" name="music" value="Hip-Hop" id="musicq3" th:field="*{q3_A}"> 
             <label for="musicq3">Hip-Hop</label><br>
-            <input type="radio" name="music" value="Classical" id="musicq4">
+            <input type="radio" name="music" value="Classical" id="musicq4" th:field="*{q3_A}">
             <label for="musicq4">Classical</label><br>
-            <input type="radio" name="music" value="Rock" id="musicq5">
+            <input type="radio" name="music" value="Rock" id="musicq5" th:field="*{q3_A}">
             <label for="musicq5">Rock</label><br><br>
 
             <!-- Soical Media platform-->
-            <label for="socialmedia">5. What is your favorite social media platform?</label><br>
-            <input type="radio" name="socialmedia" value="instagram" id="socialmedia1">
+            <label for="socialmedia">3. What is your favorite social media platform?</label><br>
+            <input type="radio" name="socialmedia" value="instagram" id="socialmedia1" th:field="*{q4_A}">
             <label for="socialmedia1">Instagram</label><br>
-            <input type="radio" name="socialmedia" value="tiktok" id="socialmedia2">
+            <input type="radio" name="socialmedia" value="tiktok" id="socialmedia2" th:field="*{q4_A}">
             <label for="socialmedia2">Tik Tok</label><br>
-            <input type="radio" name="socialmedia" value="facebook" id="socialmedia3">
+            <input type="radio" name="socialmedia" value="facebook" id="socialmedia3" th:field="*{q4_A}">
             <label for="socialmedia3">Facebook</label><br>
-            <input type="radio" name="socialmedia" value="twitter" id="socialmedia4">
+            <input type="radio" name="socialmedia" value="twitter" id="socialmedia4" th:field="*{q4_A}">
             <label for="socialmedia4">Twitter</label><br>
-            <input type="radio" name="socialmedia" value="snapchat" id="socialmedia5">
+            <input type="radio" name="socialmedia" value="snapchat" id="socialmedia5" th:field="*{q4_A}">
             <label for="socialmedia5">Snapchat</label><br>
-            <input type="radio" name="socialmedia" value="linkedln" id="socialmedia6">
+            <input type="radio" name="socialmedia" value="linkedln" id="socialmedia6" th:field="*{q4_A}">
             <label for="socialmedia6">Linkedln</label><br><br>
 
             <!-- Moive -->
-            <label for="movie">6. What is your favorite movie genre?</label><br>
-            <input type="radio" name="movie" value="Romance" id="movie1">
+            <label for="movie">4. What is your favorite movie genre?</label><br>
+            <input type="radio" name="movie" value="Romance" id="movie1" th:field="*{q5_A}">
             <label for="movie1">Romance</label><br>
-            <input type="radio" name="movie" value="Scifi" id="movie2">
+            <input type="radio" name="movie" value="Scifi" id="movie2" th:field="*{q5_A}">
             <label for="movie2">Sci-fi</label><br>
-            <input type="radio" name="movie" value="Adventure" id="movie3">
+            <input type="radio" name="movie" value="Adventure" id="movie3" th:field="*{q5_A}">
             <label for="movie3">Adventure</label><br>
-            <input type="radio" name="movie" value="Anime" id="movie4">
+            <input type="radio" name="movie" value="Anime" id="movie4" th:field="*{q5_A}">
             <label for="movie4">Anime</label><br>
-            <input type="radio" name="movie" value="Comedy" id="movie5">
+            <input type="radio" name="movie" value="Comedy" id="movie5" th:field="*{q5_A}">
             <label for="movie5">Comedy</label><br>
-            <input type="radio" name="movie" value="Horror" id="movie6">
+            <input type="radio" name="movie" value="Horror" id="movie6" th:field="*{q5_A}">
             <label for="movie6">Horror</label><br><br>
 
             <!-- Battery -->
-            <label for="battery">7. What is your favorite social media platform?</label><br>
-            <input type="radio" name="battery" value="zeroten" id="battery1">
+            <label for="battery">5. What is your battery percentage most of the time?</label><br>
+            <input type="radio" name="battery" value="zeroten" id="battery1" th:field="*{q6_A}">
             <label for="battery1">0 - 10%</label><br>
-            <input type="radio" name="battery" value="twentyforty" id="battery2">
+            <input type="radio" name="battery" value="twentyforty" id="battery2" th:field="*{q6_A}">
             <label for="battery2">20 - 40%</label><br>
-            <input type="radio" name="battery" value="fifty" id="battery3">
+            <input type="radio" name="battery" value="fifty" id="battery3" th:field="*{q6_A}">
             <label for="battery3">50%</label><br>
-            <input type="radio" name="battery" value="sixtyseventy" id="battery4">
+            <input type="radio" name="battery" value="sixtyseventy" id="battery4" th:field="*{q6_A}">
             <label for="battery4">60 - 70%</label><br>
-            <input type="radio" name="battery" value="eightyhundred" id="battery5">
+            <input type="radio" name="battery" value="eightyhundred" id="battery5" th:field="*{q6_A}">
             <label for="battery5">80 - 100%</label><br><br>
 
             <!-- Bedtime-->
-            <label for="bedtime">7. When is your bedtime (choose the one that is closest)?</label><br>
-            <input type="radio" name="bedtime" value="nineten" id="bedtime1">
+            <label for="bedtime">6. When is your bedtime (choose the one that is closest)?</label><br>
+            <input type="radio" name="bedtime" value="nineten" id="bedtime1" th:field="*{q6_A}">
             <label for="bedtime1">9pm - 10pm</label><br>
-            <input type="radio" name="bedtime" value="eleventwele" id="bedtime2">
+            <input type="radio" name="bedtime" value="eleventwele" id="bedtime2" th:field="*{q6_A}">
             <label for="bedtime2">11pm - 12pm</label><br>
-            <input type="radio" name="bedtime" value="onethree" id="bedtime3">
+            <input type="radio" name="bedtime" value="onethree" id="bedtime3" th:field="*{q6_A}">
             <label for="bedtime3">1am - 3am</label><br>
-            <input type="radio" name="bedtime" value="foursix" id="bedtime4">
+            <input type="radio" name="bedtime" value="foursix" id="bedtime4" th:field="*{q6_A}">
             <label for="bedtime4">4am - 6am</label><br>
-            <input type="radio" name="bedtime" value="aftersunrise" id="bedtime5">
+            <input type="radio" name="bedtime" value="aftersunrise" id="bedtime5" th:field="*{q6_A}">
             <label for="bedtime5">after sunrise</label><br><br>
 
             <!-- procastinator-->
-            <label for="procastinator">8. What is your favorite social media platform?</label><br>
-            <input type="radio" name="procastinator" value="yes" id="procastinator1">
+            <label for="procastinator">7. Are you a procrastinator?</label><br>
+            <input type="radio" name="procastinator" value="yes" id="procastinator1" th:field="*{q7_A}">
             <label for="procastinator1">Yes, ALL THE WAY</label><br>
-            <input type="radio" name="procastinator" value="no" id="procastinator2">
+            <input type="radio" name="procastinator" value="no" id="procastinator2" th:field="*{q7_A}">
             <label for="procastinator2">No I don’t like delaying work till the last minute</label><br>
-            <input type="radio" name="procastinator" value="sometimes" id="procastinator3">
+            <input type="radio" name="procastinator" value="sometimes" id="procastinator3" th:field="*{q7_A}">
             <label for="procastinator3">Sometimes</label><br>
-            <input type="radio" name="procastinator" value="often" id="procastinator4">
+            <input type="radio" name="procastinator" value="often" id="procastinator4" th:field="*{q7_A}">
             <label for="procastinator4">Often</label><br>
-            <input type="radio" name="procastinator" value="notreally" id="procastinator5">
+            <input type="radio" name="procastinator" value="notreally" id="procastinator5" th:field="*{q7_A}">
             <label for="procastinator5">Not really</label><br><br>
 
             <!--pet-->
-            <label for="pet">9. Are you a dog person or a cat person? </label><br>
-            <input type="radio" name="pet" value="dog" id="pet1">
+            <label for="pet">8. Are you a dog person or a cat person? </label><br>
+            <input type="radio" name="pet" value="dog" id="pet1" th:field="*{q8_A}">
             <label for="pet1">Dog-person</label><br>
-            <input type="radio" name="pet" value="cat" id="pet2">
+            <input type="radio" name="pet" value="cat" id="pet2" th:field="*{q8_A}">
             <label for="pet2">Cat-person</label><br>
-            <input type="radio" name="pet" value="both" id="pet3">
+            <input type="radio" name="pet" value="both" id="pet3" th:field="*{q8_A}">
             <label for="pet3">Both</label><br>
-            <input type="radio" name="pet" value="others" id="pet4">
+            <input type="radio" name="pet" value="others" id="pet4" th:field="*{q8_A}">
             <label for="pet4">Others</label><br>
-            <input type="radio" name="pet" value="dislike" id="pet5">
+            <input type="radio" name="pet" value="dislike" id="pet5" th:field="*{q8_A}">
             <label for="pet5">I DON'T LIKE ANIMALS AT ALL!</label><br><br>
 
             <!--attract-->
-            <label for="attract">10. Would you like to have a physically attractive body or a sexy big brain? </label><br>
-            <input type="radio" name="attract" value="hotbody" id="attract1">
+            <label for="attract">9. Would you like to have a physically attractive body or a sexy big brain? </label><br>
+            <input type="radio" name="attract" value="hotbody" id="attract1" th:field="*{q9_A}">
             <label for="attract1">Hot Body honey</label><br>
-            <input type="radio" name="attract" value="bigbrain" id="attract2">
+            <input type="radio" name="attract" value="bigbrain" id="attract2" th:field="*{q9_A}">
             <label for="attract2">BIG bRaIN</label><br>
-            <input type="radio" name="attract" value="both" id="attract3">
+            <input type="radio" name="attract" value="both" id="attract3" th:field="*{q9_A}">
             <label for="pet3">BOTH, of course</label><br>
-            <input type="radio" name="attract" value="whatever" id="attract4">
+            <input type="radio" name="attract" value="whatever" id="attract4" th:field="*{q9_A}">
             <label for="pet4">Whatever</label><br><br>
 
             <!-- Preference-->
             <label for="prefer">10. Would you rather your partner be rich and cocky or broke and a sweetheart?</label><br>
-            <input type="radio" name="prefer" value="rich" id="prefer1">
+            <input type="radio" name="prefer" value="rich" id="prefer1" th:field="*{q10_A}">
             <label for="prefer1">RICH I only care about being a rich wife/husband</label><br>
-            <input type="radio" name="prefer" value="sweetheart" id="prefer2">
+            <input type="radio" name="prefer" value="sweetheart" id="prefer2" th:field="*{q10_A}">
             <label for="prefer2">I just want someone to care about ME</label><br>
-            <input type="radio" name="prefer" value="both" id="prefer3">
+            <input type="radio" name="prefer" value="both" id="prefer3" th:field="*{q10_A}">
             <label for="prefer3">Why can't I get both?</label><br><br>
 
             <!--Secret-->
-            <label for="secret">9. Would you rather have a secret life behind your partner's back?</label><br>
-            <input type="radio" name="secret" value="yes" id="secret1">
+            <label for="secret">11. Would you rather have a secret life behind your partner's back?</label><br>
+            <input type="radio" name="secret" value="yes" id="secret1" th:field="*{q11_A}">
             <label for="secret1">A secret makes a woman, woman </label><br>
-            <input type="radio" name="secret" value="no" id="secret2">
+            <input type="radio" name="secret" value="no" id="secret2" th:field="*{q11_A}">
             <label for="secret2">We should share everything with our partner</label><br>
-            <input type="radio" name="secret" value="maybe" id="secret3">
+            <input type="radio" name="secret" value="maybe" id="secret3" th:field="*{q11_A}">
             <label for="secret3">I go with the flow</label><br>
-            <input type="radio" name="secret" value="others" id="secret4">
+            <input type="radio" name="secret" value="others" id="secret4" th:field="*{q11_A}">
             <label for="secret4">Depends on the stories/partners</label><br><br>
 
             <div>

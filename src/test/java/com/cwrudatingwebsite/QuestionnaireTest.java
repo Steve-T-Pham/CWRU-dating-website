@@ -3,10 +3,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.beans.Transient;
 import org.junit.jupiter.api.Test;
-import com.cwrudatingwebsite.Questionnaire;
+import com.cwrudatingwebsite.personalQuestionnaire;
 class QuestionnaireTest {
     
-    static Questionnaire hi= new Questionnaire();
+    static personalQuestionnaire hi= new personalQuestionnaire();
 
     public static void setupClass(){
         hi.setUsername("wendy");
