@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "account")
-public class Account implements Serializable {
+public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,9 +37,6 @@ public class Account implements Serializable {
     @Column(nullable = true, length = 15)
     String role = "regular";
 
-    @Column(nullable = true, length = 255)
-    String bio = null;
-
     //String first_name, String last_name
     public Account(String username, String password, String email, String first_name, String last_name)  {
         this.setUsername(username);
@@ -55,7 +52,6 @@ public class Account implements Serializable {
         this.setEmail(null);
         this.setFirstName(null);
         this.setLastName(null);
-        this.setBio(null);
     }
 
     //------- Getters and Setters -------
@@ -67,7 +63,7 @@ public class Account implements Serializable {
     public void setId(int id){
         this.id = id;
     }
-    
+
     public String getUsername() {
         //pull from sql
         return username;
@@ -94,7 +90,7 @@ public class Account implements Serializable {
         this.email  = email;
     }
 
-    
+
     public String getFirstName() {
         return first_name;
     }
@@ -119,11 +115,4 @@ public class Account implements Serializable {
         this.role = role;
     }
 
-    public String getBio(){
-        return bio;
-    }
-
-    public void setBio(String bio){
-        this.bio = bio;
-    }
 }

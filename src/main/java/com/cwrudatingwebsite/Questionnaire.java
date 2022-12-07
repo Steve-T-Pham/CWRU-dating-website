@@ -1,67 +1,73 @@
 package com.cwrudatingwebsite;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "prefQuestionnaire")
-public class prefQuestionnaire { //all the question objects in this questionnaire
+@Table(name = "Questionnaire_Gender")
+public class Questionnaire { //all the question objects in this questionnaire
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    
-    @Column(nullable = false, unique = true, length = 45)
-    String username = null; //username
-    
-    @Column(nullable = false, length = 45)
-    String pGender= null; //preferred gender
+    @Column(nullable = false,length = 100)
+    String major;
+    @Column(nullable = false,length = 100)
+    int age;
+    @Column(nullable = false,length = 100)
+    String sex;
+    @Column(nullable = false,length = 100)
+    String gender;
+    @Column(nullable = false, unique = true, length = 100)
+    String username = null;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q1_A = null;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q2_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q3_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q4_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q5_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q6_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q7_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q8_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q9_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q10_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 100)
     String q11_A;
 
-    
+    @Column(nullable = false, length = 100)
+    String q12_A;
 
-    public prefQuestionnaire(String username_1, String pGend, String one, String two, String three, String four, String five, String six, String seven, String eight, String nine, String ten, String eleven)
+    @Column(nullable = false, length = 100)
+    String q13_A;
+
+    public Questionnaire(String username_1, String major, int age, String sex, String gender, String one, String two, String three, String four, String five, String six, String seven, String eight, String nine, String ten, String eleven, String twelve, String thirteen)
     {
         //set each question to corresponding question that will have the stored answer to a question object
       
         this.setUsername(username_1);
-        this.setGender(pGend);
+        this.setMajor(major);
+        this.setAge(age);
+        this.setGender(gender);
+        this.setSex(sex);
         this.setQ1_A(one);
         this.setQ2_A(two);
         this.setQ3_A(three);
@@ -73,11 +79,15 @@ public class prefQuestionnaire { //all the question objects in this questionnair
         this.setQ9_A(nine);
         this.setQ10_A(ten);
         this.setQ11_A(eleven);
+        this.setQ12_A(twelve);
+        this.setQ13_A(thirteen);
         
 
     }
-    public prefQuestionnaire(){
+    public Questionnaire(){
         this.setUsername(null);
+        this.setGender(null);
+        this.setMajor(null);
         this.setGender(null);
         this.setQ1_A(null);
         this.setQ2_A(null);
@@ -90,6 +100,8 @@ public class prefQuestionnaire { //all the question objects in this questionnair
         this.setQ9_A(null);
         this.setQ10_A(null);
         this.setQ11_A(null);
+        this.setQ12_A(null);
+        this.setQ13_A(null);
         
     }
     //getters and setters
@@ -104,13 +116,6 @@ public class prefQuestionnaire { //all the question objects in this questionnair
     }
     public void setUsername(String newUsername){
         this.username = newUsername;
-    }
-    public String getGender(){
-        return pGender;
-    }
-    public void setGender(String prefG)
-    {
-        this.pGender = prefG;
     }
     //getting Question #'s answers and setting them (quite a lot of redundant code but it works)
     public String getQ1_A(){
@@ -179,6 +184,49 @@ public class prefQuestionnaire { //all the question objects in this questionnair
     public void setQ11_A(String eleven_A){
         this.q11_A = eleven_A;
     }
-    
+    public String getQ12_A(){
+        return q12_A;
+    }
+    public void setQ12_A(String twelve_A){
+        this.q12_A = twelve_A;
+    }
+    public String getQ13_A(){
+        return q13_A;
+    }
+    public void setQ13_A(String thirteen_A){
+        this.q13_A = thirteen_A;
+    }
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+  
    
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<h1 th:text="'Please find your matches below'">Please find your matches below</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">Username</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr style="width: 100px;" th:each="person : ${MatchedUsernames}">
+        <td th:text="${person}"/>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
