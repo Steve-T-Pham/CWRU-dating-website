@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,6 +33,9 @@ public class Cwrudating {
     private QuestionnaireRepository questionnaireRepository;
     @Autowired
     private QuestionnaireService questionnaireService;
+
+
+    private List<String> usernameMatchList;
 
 
     //test method *has no functionality atm*
@@ -118,12 +122,22 @@ public class Cwrudating {
     @GetMapping("/matching")
     public ModelAndView matchPage(Model model)
     {
-        String currentUser=getCurrentUser();
-        List<Questionnaire> usernameList=questionnaireRepository.findByUsername(currentUser);
-        List<Questionnaire> questionnaireList=questionnaireRepository.findAll();
-        List<String> matchList = questionnaireService.findMatch(questionnaireList,usernameList.get(0));
-        model.addAttribute("MatchedUsernames",matchList);
-        System.out.println("The model attribute is "+model.getAttribute("MatchedUsernames"));
+        String currentUser = getCurrentUser();
+        List<Questionnaire> usernameList = questionnaireRepository.findByUsername(currentUser);
+        List<Questionnaire> questionnaireList = questionnaireRepository.findAll();
+
+        // Find the matching usernames and store them in the usernameMatchList variable
+        usernameMatchList = questionnaireService.findMatch(questionnaireList, usernameList.get(0));
+
+        // Retrieve the Account objects for the matching usernames
+        List<Account> matchedUsernames = new ArrayList<>();
+        for (String username : usernameMatchList) {
+            Account account = repo.findByUsername(username);
+            matchedUsernames.add(account);
+        }
+
+        // Add the matched usernames to the model
+        model.addAttribute("MatchedUsernames", matchedUsernames);
         return new ModelAndView("match");
     }
 
@@ -141,8 +155,7 @@ public class Cwrudating {
         return new ModelAndView("profile");
     }
 
-    public String getCurrentUser()
-    {
+    public String getCurrentUser(){
         String currentUserName="";
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
