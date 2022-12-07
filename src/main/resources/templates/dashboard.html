@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
 </head>
 <body>
 
@@ -14,14 +15,13 @@
         <a class="active" href="dashboard" onClick="reload">Home</a>
         <a href="profile">Profile</a>
         <a href="questionnaire">Questionnaire</a>
-        <a href="matches">Matches</a>
         <a href="login">Logout</a>
         <div class="nav-right">
             <a href="https://github.com/Steve-T-Pham/CWRU-dating-website" target="_blank"><i class="fa-brands fa-square-github"></i></a>
         </div>
     </div>
 
-    <span th:text="'Welcome, ' + ${account.username} + '.'" class="welcome-message">username</span>
+    <span th:text="'Welcome, ' + ${#request.userPrincipal.principal.username} + '.'" class="welcome-message">username</span>
     <h2 class="welcome-subtext">Relationships are made to feel easy, so use our service to find the perfect match for you today.</h2>
 
     <div class="home-content-wrapper">

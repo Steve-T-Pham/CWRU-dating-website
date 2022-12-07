@@ -12,7 +12,6 @@
         <a class="active" href="dashboard">Home</a>
         <a href="profile">Profile</a>
         <a href="questionnaire">Questionnaire</a>
-        <a href="matches">Matches</a>
         <a href="login">Logout</a>
         <div class="nav-right">
             <a href="https://github.com/Steve-T-Pham/CWRU-dating-website" target="_blank"><i class="fa-brands fa-square-github"></i></a>
@@ -44,12 +43,13 @@
             <div class="profile-username"> 
                 Bio:
             </div>
+            <!--
             <div th:text="${account.bio}"></div>
 
             <form th:action="@{/update-bio}" th:object="${account}" method="POST"> 
                 <input type="text" th:field="*{bio}" placeholder="Enter text..." value=""/>
                 <button type="submit">Update</button>
-            </form>
+            </form>-->
         </div>
     </div>
 </body>

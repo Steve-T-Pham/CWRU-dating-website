@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a class="active" href="dashboard">Home</a>
+        <a href="profile">Profile</a>
+        <a href="questionnaire">Questionnaire</a>
+        <a href="login">Logout</a>
+        <div class="nav-right">
+            <a href="https://github.com/Steve-T-Pham/CWRU-dating-website" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+        </div>
+    </div>
+
+<h1 th:text="'Please find your matches below'">Please find your matches below</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">Username</th>
+        <th style="width: 100px;">Email</th>
+        <th style="width: 100px;">Send Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr style="width: 100px;" th:each="person : ${MatchedUsernames}">
+        <td th:text="${person.username}"/></td>
+        <td th:text="${person.email}"></td>
+        <td><button type="button" class="btn btn-primary" onclick="sendEmail(this)">Send Email</button></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
