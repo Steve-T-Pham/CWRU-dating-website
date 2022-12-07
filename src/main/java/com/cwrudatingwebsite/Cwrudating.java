@@ -1,10 +1,7 @@
 package com.cwrudatingwebsite;
 
-import java.util.Map;
-
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,76 +11,76 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import java.util.*;
 
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 
 @Controller
+
 public class Cwrudating {
-    
+
+
     @Autowired
     private AccountRepository repo;
+   @Autowired
+   private CustomAccountDetailsService customAccountDetailsService;
+    @Autowired
+    private QuestionnaireRepository questionnaireRepository;
+    @Autowired
+    private QuestionnaireService questionnaireService;
 
-    @GetMapping("/login")
+
+    //test method *has no functionality atm*
+    @RequestMapping("/resource")
+    public void home(@AuthenticationPrincipal Account user) {
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    }
+
+    //renders login page
+    @GetMapping("")
     public ModelAndView firstPage(){
         return new ModelAndView("login");
     }
-
-    @PostMapping("/login")
-    public ModelAndView login(Model model){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        Account account = repo.findByUsername(username);
-
-        model.addAttribute("account", account);
-        return new ModelAndView("dashboard");
-    }
-
+    
     //renders the register page
     @RequestMapping("/register")
     public ModelAndView secondPage(Model model){
         model.addAttribute("account", new Account(null, null, null, null, null));
         return new ModelAndView("register");
     }
-
+    
     //password encryption
     @PostMapping("/process_register")
     public ModelAndView processRegisteration(@ModelAttribute Account account){
+        ModelAndView modelAndView=new ModelAndView();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(account.getPassword());
         account.setPassword(encodedPassword);
         repo.save(account);
+
         return new ModelAndView("login");
     }
 
-     //renders the matches page
-     @RequestMapping("/matches")
-     public ModelAndView sixthPage(){
-         return new ModelAndView("matches");
-     }
-
-    @RequestMapping("/prefQuestionnaire")
-    public ModelAndView hiddenPage(Model model){
-        prefQuestionnaire prefQuestionnaire = new prefQuestionnaire();
-        model.addAttribute("prefQuestionnaire", prefQuestionnaire);
-        return new ModelAndView("prefQuestionnaire");
-    }
-
-    @PostMapping("/process_prefquestionnaire")
-    public ModelAndView processPrefQuestionnaire(@ModelAttribute prefQuestionnaire prefQuestionnaire){
-        return new ModelAndView("matches");
-    }
-    
      //renders the questionnaire page
      @RequestMapping("/questionnaire")
-     public ModelAndView thirdPage(Model model){
-         personalQuestionnaire personalQuestionnaire = new personalQuestionnaire();
-         model.addAttribute("personalQuestionnaire", personalQuestionnaire);
+     public ModelAndView thirdPage(Model model,@ModelAttribute Questionnaire questionnaire) throws SQLException {
+        String currentUser=getCurrentUser();
+         List<Questionnaire> usernameList=questionnaireRepository.findByUsername(currentUser);
+        // System.out.println(usernameList.get(0).getUsername());
+       //  System.out.println(usernameList.get(0).getSex());
+         if(usernameList.size()>0) {
+           /*  List<Questionnaire> questionnaireList=questionnaireRepository.findAll();
+             List<String> matchList = questionnaireService.findMatch(questionnaireList,usernameList.get(0));
+             model.addAttribute("MatchedUsernames",matchList);
+              System.out.println("The model attribute is "+model.getAttribute("MatchedUsernames"));
+             //return new ModelAndView("UserExists");*/
+             return new ModelAndView("redirect:/matching");
+         }
+         model.addAttribute("questionnaire", questionnaire);
          List<String> listMajor = Arrays.asList("Accountancy", "Accounting", "Architect", "Aerospace Engineering", 
          "Ancient Near Eastern and Egyptian Studies", "Anesthesia", "Anthropology", "Applied Mathematics", 
          "Art Education", "Art History and Museum Studies", "Art History", "Asian Studies", "Astronomy", 
@@ -101,52 +98,59 @@ public class Cwrudating {
          "Systems and Control Engineering", "Systems Biology", "Teacher Education", "Theater Arts", "Women's and Gender Studies", 
          "World Literature", "Others");
         model.addAttribute("listMajor", listMajor);
+        System.out.println("Questionnaire Username "+questionnaire.getUsername());
+
          return new ModelAndView("questionnaire");
      }
- 
-     @PostMapping("/process_questionnaire")
-     public ModelAndView processQuestionnaire(@ModelAttribute personalQuestionnaire personalQuestionnaire){
-         return new ModelAndView("prefQuestionnaire");
-     }
-    
-     
+
+    @PostMapping("/process_questionnaire")
+    public ModelAndView processQuestionnaire(@ModelAttribute Questionnaire questionnaire,Model model){
+        String currentUserName=getCurrentUser();
+        questionnaire.setUsername(currentUserName);
+        List<Questionnaire> questionnaireList=questionnaireRepository.findAll();
+        List<String> matchList = questionnaireService.findMatch(questionnaireList,questionnaire);
+       // model.addAttribute("MatchedUsernames",matchList);
+        questionnaireRepository.save(questionnaire);
+       // return new ModelAndView("test");
+        return new ModelAndView("redirect:/matching");
+    }
+
+    @GetMapping("/matching")
+    public ModelAndView matchPage(Model model)
+    {
+        String currentUser=getCurrentUser();
+        List<Questionnaire> usernameList=questionnaireRepository.findByUsername(currentUser);
+        List<Questionnaire> questionnaireList=questionnaireRepository.findAll();
+        List<String> matchList = questionnaireService.findMatch(questionnaireList,usernameList.get(0));
+        model.addAttribute("MatchedUsernames",matchList);
+        System.out.println("The model attribute is "+model.getAttribute("MatchedUsernames"));
+        return new ModelAndView("match");
+    }
+
+
     //renders dashboard page
     @GetMapping("/dashboard")
-    public ModelAndView fourthPage(Model model){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        Account account = repo.findByUsername(username);
-
-        model.addAttribute("account", account);
+    public ModelAndView fourthPage(){
         return new ModelAndView("dashboard");
     }
 
     //renders profile page
     @GetMapping("/profile")
-    public ModelAndView fifthPage(Model model){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        Account account = repo.findByUsername(username);
-
+    public ModelAndView fifthPage(@ModelAttribute Account account, Model model){
         model.addAttribute("account", account);
-        model.addAttribute("bio", account.getBio());
         return new ModelAndView("profile");
     }
 
-    @RequestMapping(value = "/update-bio", method = RequestMethod.POST) 
-    public String updateBio(@RequestParam("bio") String bio, Model model) {
+    public String getCurrentUser()
+    {
+        String currentUserName="";
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        // Get the current user's account
-        Account account = repo.findByUsername(username);
-        model.addAttribute("account", account);
-        // Update the bio
-        account.setBio(bio);
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            currentUserName = authentication.getName();
+            System.out.println("The current user logged in is "+currentUserName);
+        }
+        return currentUserName;
 
-        // Save the updated account
-        repo.save(account);
-
-        return "profile";
     }
-    
+
 }

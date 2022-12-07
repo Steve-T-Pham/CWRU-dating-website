@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Questionnaire</title>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
 
@@ -12,26 +11,115 @@
         <a class="active" href="dashboard">Home</a>
         <a href="profile">Profile</a>
         <a href="questionnaire">Questionnaire</a>
-        <a href="matches">Matches</a>
         <a href="login">Logout</a>
         <div class="nav-right">
             <a href="https://github.com/Steve-T-Pham/CWRU-dating-website" target="_blank"><i class="fa-brands fa-square-github"></i></a>
         </div>
     </div>
+
     
     <div class="questionnaire-wrapper">
-        <form th:action="@{/process_questionnaire}" method="post" th:object="${personalQuestionnaire}">
-            
-            <label> Major:</label>
-                <select th:field="*{q1_A}"> 
-                    <option th:each="p : ${listMajor}" th:value="${p}" th:text="${p}"/>
+        <form th:action="@{/process_questionnaire}" method="post" th:object="${questionnaire}">
+            <label for="major">Major:
+                <!--<select name="major">-->
+                    <select th:field="*{major}">
+                    <option value="" disabled selected>Select your major...</option>
+                    <option value="Accountancy"> Accountancy</option>
+                    <option value="Accounting"> Accounting</option>
+                    <option value="Aerospace Engineering"> Aerospace Engineering</option>
+                    <option value="Ancient Near Eastern and Egyptian Studies"> Ancient Near Eastern and Egyptian Studies</option>
+                    <option value="Anesthesia"> Anesthesia</option>
+                    <option value="Anthropology"> Anthropology</option>
+                    <option value="Applied Mathematics"> Applied Mathematics</option>
+                    <option value="Art Education"> Art Education</option>
+                    <option value="Art History and Museum Studies"> Art History and Museum Studies</option>
+                    <option value="Art History"> Art History</option>
+                    <option value="Asian Studies"> Asian Studies</option>
+                    <option value="Astronomy"> Astronomy</option>
+                    <option value="Biochemistry"> Biochemistry</option>
+                    <option value="Bioethics and Medical Humanities"> Bioethics and Medical Humanities</option>
+                    <option value="Bioethics"> Bioethics</option>
+                    <option value="Biology"> Biology</option>
+                    <option value="Biomedical and Health Informatics"> Biomedical and Health Informatics</option>
+                    <option value="Business Administration"> Business Administration</option>
+                    <option value="Business Analytics and Intelligence"> Business Analytics and Intelligence</option>
+                    <option value="Biomedical Engineering">Biomedical Engineering</option>
+                    <option value="Chemical Biology"> Chemical Biology</option>
+                    <option value="Chemistry"> Chemistry</option>
+                    <option value="Chinese"> Chinese</option>
+                    <option value="Civil Engineering"> Civil Engineering</option>
+                    <option value="Classics">Classics</option>
+                    <option value="Cognitive Science">Cognitive Science</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Dance">Dance</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Dance">Dance</option>
+                    <option value="Data Science and Analytics">Data Science and Analytic</option>
+                    <option value="Economics">Economics</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
+                    <option value="Engineering Physics">Engineering Physicg</option>
+                    <option value="English">English</option>
+                    <option value="Evolutionary Biology">Evolutionary Biology</option>
+                    <option value="Environmental Geology">Evolutionary Geology</option>
+                    <option value="Environmental Studies">Environmental Studies</option>
+                    <option value="Evolutionary Biology">Evolutionary Biology</option>
+                    <option value="French">French</option>
+                    <option value="General Engineering">General Engineering</option>
+                    <option value="Geological Science">Geological Science</option>
+                    <option value="German">German</option>
+                    <option value="Gerontological Studies">Gerontological Studies</option>
+                    <option value="History and Philosophy of Science">History and Philosophy of Science</option>
+                    <option value="International Studies">International Studies</option>
+                    <option value="Japanese Studies">Japanese Studies</option>
+                    <option value="Material Science and Engineering">Material Science and Engineering</option>
+                    <option value="Mathematics and Physics">Mathematics and Physics</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Military Ethics">Military Ethics</option>
+                    <option value="Music Education">Music Education</option>
+                    <option value="Music">Music</option>
+                    <option value="Natural Sciences"> Natural Sciences</option>
+                    <option value="Neuroscience">Neuroscience</option>
+                    <option value="Nursing">Nursing</option>
+                    <option value="Nutrition"> Nutrition</option>
+                    <option value="Nutritional Biochemistry and Metabolism">Nutritional Biochemistry and Metabolisme</option>
+                    <option value="Origins Science">Origins Science</option>
+                    <option value="Philosophy">Philosophy</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Political Science">Political Science</option>
+                    <option value="Polymer Science and Engineering"> Polymer Science and Engineering</option>
+                    <option value="Religious Studies">Religious Studies</option>
+                    <option value="Sociology">Sociology</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Statistics">Statistics</option>
+                    <option value="Systems and Control Engineering">Systems and Control Engineering</option>
+                    <option value="Systems Biology">Systems Biology</option>
+                    <option value="Teacher Education">Teacher Educatioe</option>
+                    <option value="Theater Arts">Theater Arts</option>
+                    <option value="Women's and Gender Studies">Women's and Gender Studies</option>
+                    <option value="World Literature">World Literature</option>
+                    <option value="Others">Others</option>
                 </select>
-            </label><br><br> 
+            </label><br><br>
+
+
+
             <label for="age">Age:</label>
-            <input type="number" name="age" min="18"><br><br>
+            <!--<input type="number" name="age" min="18"><br><br>-->
+            <input type="number" th:field="*{age}" min="18" required="true"><br><br>
+
+            <label for="sex">Sex:
+               <!-- <select name="sex">-->
+                <select th:field="*{sex}">
+                    <option value="" disabled selected>Select..</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Intersex">Intersex</option>
+                    <option value="Others">Others</option>
+                </select>
+            </label><br><br>
 
             <label for="gender">Gender:
-                <select name="gender">
+                <select th:field="*{gender}">
                     <option value="" disabled selected>Select..</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -42,145 +130,257 @@
             </label><br><br>
 
 
-            <!-- Slang-->
-            <label for="slang">1. What is your gen z slang?</label><br>
-            <input type="radio" name="slang" value="Bet" id="slangq1" th:field="*{q2_A}">
+         <!--   <label for="season">1. What is your favorite season?</label><br>
+            <input type="radio" th:field="*{season}" value="Spring" id="seasonq1">
+            <label for="seasonq1">Spring</label><br>
+            <input type="radio" th:field="*{season}" value="Summer" id="seasonq2">
+            <label for="seasonq2">Summer</label><br>
+            <input type="radio" th:field="*{season}" value="Fall" id="seasonq3">
+            <label for="seasonq3">Fall</label><br>
+            <input type="radio" th:field="*{season}" value="Winter" id="seasonq4">
+            <label for="seasonq4">Winter</label><br><br>
+
+
+            <label for="subject">2. What is your favorite subject?</label><br>
+            <input type="radio" th:field="*{subject}" value="Math" id="subjectq1">
+            <label for="subjectq1">Math</label><br>
+            <input type="radio" th:field="*{subject}" value="English" id="subjectq2">
+            <label for="subjectq2">English</label><br>
+            <input type="radio" th:field="*{subject}" value="Science" id="subjectq3">
+            <label for="subjectq3">Science</label><br>
+            <input type="radio" th:field="*{subject}" value="History" id="subjectq4">
+            <label for="subjectq4">History</label><br><br>
+
+
+            <label for="slang">3. What is your gen z slang?</label><br>
+            <input type="radio" th:field="*{slang}" value="Bet" id="slangq1">
             <label for="slangq1">Bet</label><br>
-            <input type="radio" name="slang" value="Nocap" id="slangq2" th:field="*{q2_A}">
+            <input type="radio" th:field="*{slang}" value="Nocap" id="slangq2">
             <label for="slangq2">No cap</label><br>
-            <input type="radio" name="slang" value="Hitsdifferent" id="slangq3" th:field="*{q2_A}">
+            <input type="radio" th:field="*{slang}" value="Hitsdifferent" id="slangq3">
             <label for="slangq3">Hits different</label><br>
-            <input type="radio" name="slang" value="Vibing" id="slangq4" th:field="*{q2_A}">
+            <input type="radio" th:field="*{slang}" value="Vibing" id="slangq4">
             <label for="slangq4">Vibing</label><br>
-            <input type="radio" name="slang" value="lowkeyhighkey" id="slangq5" th:field="*{q2_A}">
+            <input type="radio" th:field="*{slang}" value="lowkeyhighkey" id="slangq5">
             <label for="slangq5">Low-key/High-key</label><br><br>
 
-            <!--Music genre-->
-            <label for="music">2. What is your favorite music genre?</label><br>
-            <input type="radio" name="music" value="Pop" id="musicq1" th:field="*{q3_A}">
+
+            <label for="music">4. What is your favorite music genre?</label><br>
+            <input type="radio" th:field="*{music}" value="Pop" id="musicq1">
             <label for="musicq1">Pop</label><br>
-            <input type="radio" name="music" value="Country" id="musicq2" th:field="*{q3_A}">
+            <input type="radio" th:field="*{music}" value="Country" id="musicq2">
             <label for="musicq2">Country</label><br>
-            <input type="radio" name="music" value="Hip-Hop" id="musicq3" th:field="*{q3_A}"> 
+            <input type="radio" th:field="*{music}" value="Hip-Hop" id="musicq3">
             <label for="musicq3">Hip-Hop</label><br>
-            <input type="radio" name="music" value="Classical" id="musicq4" th:field="*{q3_A}">
+            <input type="radio" th:field="*{music}" value="Classical" id="musicq4">
             <label for="musicq4">Classical</label><br>
-            <input type="radio" name="music" value="Rock" id="musicq5" th:field="*{q3_A}">
+            <input type="radio" th:field="*{music}" value="Rock" id="musicq5">
             <label for="musicq5">Rock</label><br><br>
 
-            <!-- Soical Media platform-->
-            <label for="socialmedia">3. What is your favorite social media platform?</label><br>
-            <input type="radio" name="socialmedia" value="instagram" id="socialmedia1" th:field="*{q4_A}">
+
+            <label for="socialmedia">5. What is your favorite social media platform?</label><br>
+            <input type="radio" th:field="*{socialmedia}" value="instagram" id="socialmedia1">
             <label for="socialmedia1">Instagram</label><br>
-            <input type="radio" name="socialmedia" value="tiktok" id="socialmedia2" th:field="*{q4_A}">
+            <input type="radio" th:field="*{socialmedia}" value="tiktok" id="socialmedia2">
             <label for="socialmedia2">Tik Tok</label><br>
-            <input type="radio" name="socialmedia" value="facebook" id="socialmedia3" th:field="*{q4_A}">
+            <input type="radio" th:field="*{socialmedia}" value="facebook" id="socialmedia3">
             <label for="socialmedia3">Facebook</label><br>
-            <input type="radio" name="socialmedia" value="twitter" id="socialmedia4" th:field="*{q4_A}">
+            <input type="radio" th:field="*{socialmedia}" value="twitter" id="socialmedia4">
             <label for="socialmedia4">Twitter</label><br>
-            <input type="radio" name="socialmedia" value="snapchat" id="socialmedia5" th:field="*{q4_A}">
+            <input type="radio" th:field="*{socialmedia}" value="snapchat" id="socialmedia5">
             <label for="socialmedia5">Snapchat</label><br>
-            <input type="radio" name="socialmedia" value="linkedln" id="socialmedia6" th:field="*{q4_A}">
+            <input type="radio" th:field="*{socialmedia}" value="linkedln" id="socialmedia6">
             <label for="socialmedia6">Linkedln</label><br><br>
 
-            <!-- Moive -->
-            <label for="movie">4. What is your favorite movie genre?</label><br>
-            <input type="radio" name="movie" value="Romance" id="movie1" th:field="*{q5_A}">
+
+            <label for="movie">6. What is your favorite movie genre?</label><br>
+            <input type="radio" th:field="*{movie}" value="Romance" id="movie1">
             <label for="movie1">Romance</label><br>
-            <input type="radio" name="movie" value="Scifi" id="movie2" th:field="*{q5_A}">
+            <input type="radio" th:field="*{movie}" value="Scifi" id="movie2">
             <label for="movie2">Sci-fi</label><br>
-            <input type="radio" name="movie" value="Adventure" id="movie3" th:field="*{q5_A}">
+            <input type="radio" th:field="*{movie}" value="Adventure" id="movie3">
             <label for="movie3">Adventure</label><br>
-            <input type="radio" name="movie" value="Anime" id="movie4" th:field="*{q5_A}">
+            <input type="radio" th:field="*{movie}" value="Anime" id="movie4">
             <label for="movie4">Anime</label><br>
-            <input type="radio" name="movie" value="Comedy" id="movie5" th:field="*{q5_A}">
+            <input type="radio" th:field="*{movie}" value="Comedy" id="movie5">
             <label for="movie5">Comedy</label><br>
-            <input type="radio" name="movie" value="Horror" id="movie6" th:field="*{q5_A}">
+            <input type="radio"th:field="*{movie}" value="Horror" id="movie6">
             <label for="movie6">Horror</label><br><br>
 
-            <!-- Battery -->
-            <label for="battery">5. What is your battery percentage most of the time?</label><br>
-            <input type="radio" name="battery" value="zeroten" id="battery1" th:field="*{q6_A}">
+
+            <label for="battery">7. What is your favorite social media platform?</label><br>
+            <input type="radio" th:field="*{battery}" value="zeroten" id="battery1">
             <label for="battery1">0 - 10%</label><br>
-            <input type="radio" name="battery" value="twentyforty" id="battery2" th:field="*{q6_A}">
+            <input type="radio" th:field="*{battery}" value="twentyforty" id="battery2">
             <label for="battery2">20 - 40%</label><br>
-            <input type="radio" name="battery" value="fifty" id="battery3" th:field="*{q6_A}">
+            <input type="radio" th:field="*{battery}" value="fifty" id="battery3">
             <label for="battery3">50%</label><br>
-            <input type="radio" name="battery" value="sixtyseventy" id="battery4" th:field="*{q6_A}">
+            <input type="radio" th:field="*{battery}" value="sixtyseventy" id="battery4">
             <label for="battery4">60 - 70%</label><br>
-            <input type="radio" name="battery" value="eightyhundred" id="battery5" th:field="*{q6_A}">
+            <input type="radio" th:field="*{battery}" value="eightyhundred" id="battery5">
             <label for="battery5">80 - 100%</label><br><br>
 
-            <!-- Bedtime-->
-            <label for="bedtime">6. When is your bedtime (choose the one that is closest)?</label><br>
-            <input type="radio" name="bedtime" value="nineten" id="bedtime1" th:field="*{q6_A}">
+
+            <label for="bedtime">8. When is your bedtime (choose the one that is closest)?</label><br>
+            <input type="radio" th:field="*{bedtime}" value="nineten" id="bedtime1">
             <label for="bedtime1">9pm - 10pm</label><br>
-            <input type="radio" name="bedtime" value="eleventwele" id="bedtime2" th:field="*{q6_A}">
+            <input type="radio" th:field="*{bedtime}" value="eleventwele" id="bedtime2">
             <label for="bedtime2">11pm - 12pm</label><br>
-            <input type="radio" name="bedtime" value="onethree" id="bedtime3" th:field="*{q6_A}">
+            <input type="radio" th:field="*{bedtime}" value="onethree" id="bedtime3">
             <label for="bedtime3">1am - 3am</label><br>
-            <input type="radio" name="bedtime" value="foursix" id="bedtime4" th:field="*{q6_A}">
+            <input type="radio" th:field="*{bedtime}" value="foursix" id="bedtime4">
             <label for="bedtime4">4am - 6am</label><br>
-            <input type="radio" name="bedtime" value="aftersunrise" id="bedtime5" th:field="*{q6_A}">
+            <input type="radio" th:field="*{bedtime}" value="aftersunrise" id="bedtime5">
             <label for="bedtime5">after sunrise</label><br><br>
 
-            <!-- procastinator-->
-            <label for="procastinator">7. Are you a procrastinator?</label><br>
-            <input type="radio" name="procastinator" value="yes" id="procastinator1" th:field="*{q7_A}">
+
+            <label for="procastinator">9. What is your favorite social media platform?</label><br>
+            <input type="radio" th:field="*{procastinator}" value="yes" id="procastinator1">
             <label for="procastinator1">Yes, ALL THE WAY</label><br>
-            <input type="radio" name="procastinator" value="no" id="procastinator2" th:field="*{q7_A}">
+            <input type="radio" th:field="*{procastinator}" value="no" id="procastinator2">
             <label for="procastinator2">No I don’t like delaying work till the last minute</label><br>
-            <input type="radio" name="procastinator" value="sometimes" id="procastinator3" th:field="*{q7_A}">
+            <input type="radio" th:field="*{procastinator}" value="sometimes" id="procastinator3">
             <label for="procastinator3">Sometimes</label><br>
-            <input type="radio" name="procastinator" value="often" id="procastinator4" th:field="*{q7_A}">
+            <input type="radio" th:field="*{procastinator}" value="often" id="procastinator4">
             <label for="procastinator4">Often</label><br>
-            <input type="radio" name="procastinator" value="notreally" id="procastinator5" th:field="*{q7_A}">
+            <input type="radio" th:field="*{procastinator}" value="notreally" id="procastinator5">
             <label for="procastinator5">Not really</label><br><br>
 
-            <!--pet-->
-            <label for="pet">8. Are you a dog person or a cat person? </label><br>
-            <input type="radio" name="pet" value="dog" id="pet1" th:field="*{q8_A}">
+
+            <label for="pet">10. Are you a dog person or a cat person? </label><br>
+            <input type="radio" th:field="*{pet}" value="dog" id="pet1">
             <label for="pet1">Dog-person</label><br>
-            <input type="radio" name="pet" value="cat" id="pet2" th:field="*{q8_A}">
+            <input type="radio" th:field="*{pet}" value="cat" id="pet2">
             <label for="pet2">Cat-person</label><br>
-            <input type="radio" name="pet" value="both" id="pet3" th:field="*{q8_A}">
+            <input type="radio" th:field="*{pet}" value="both" id="pet3">
             <label for="pet3">Both</label><br>
-            <input type="radio" name="pet" value="others" id="pet4" th:field="*{q8_A}">
+            <input type="radio" th:field="*{pet}" value="others" id="pet4">
             <label for="pet4">Others</label><br>
-            <input type="radio" name="pet" value="dislike" id="pet5" th:field="*{q8_A}">
+            <input type="radio" th:field="*{pet}" value="dislike" id="pet5">
             <label for="pet5">I DON'T LIKE ANIMALS AT ALL!</label><br><br>
 
-            <!--attract-->
-            <label for="attract">9. Would you like to have a physically attractive body or a sexy big brain? </label><br>
-            <input type="radio" name="attract" value="hotbody" id="attract1" th:field="*{q9_A}">
+
+            <label for="attract">11. Would you like to have a physically attractive body or a sexy big brain? </label><br>
+            <input type="radio" th:field="*{attract}" value="hotbody" id="attract1">
             <label for="attract1">Hot Body honey</label><br>
-            <input type="radio" name="attract" value="bigbrain" id="attract2" th:field="*{q9_A}">
+            <input type="radio" th:field="*{attract}" value="bigbrain" id="attract2">
             <label for="attract2">BIG bRaIN</label><br>
-            <input type="radio" name="attract" value="both" id="attract3" th:field="*{q9_A}">
+            <input type="radio" th:field="*{attract}" value="both" id="attract3">
             <label for="pet3">BOTH, of course</label><br>
-            <input type="radio" name="attract" value="whatever" id="attract4" th:field="*{q9_A}">
+            <input type="radio" th:field="*{attract}" value="whatever" id="attract4">
             <label for="pet4">Whatever</label><br><br>
 
-            <!-- Preference-->
-            <label for="prefer">10. Would you rather your partner be rich and cocky or broke and a sweetheart?</label><br>
-            <input type="radio" name="prefer" value="rich" id="prefer1" th:field="*{q10_A}">
+
+            <label for="prefer">12. Would you rather your partner be rich and cocky or broke and a sweetheart?</label><br>
+            <input type="radio" th:field="*{prefer}" value="rich" id="prefer1">
             <label for="prefer1">RICH I only care about being a rich wife/husband</label><br>
-            <input type="radio" name="prefer" value="sweetheart" id="prefer2" th:field="*{q10_A}">
+            <input type="radio" th:field="*{prefer}" value="sweetheart" id="prefer2">
             <label for="prefer2">I just want someone to care about ME</label><br>
-            <input type="radio" name="prefer" value="both" id="prefer3" th:field="*{q10_A}">
+            <input type="radio"th:field="*{prefer}" value="both" id="prefer3">
             <label for="prefer3">Why can't I get both?</label><br><br>
 
-            <!--Secret-->
-            <label for="secret">11. Would you rather have a secret life behind your partner's back?</label><br>
-            <input type="radio" name="secret" value="yes" id="secret1" th:field="*{q11_A}">
-            <label for="secret1">A secret makes a woman, woman </label><br>
-            <input type="radio" name="secret" value="no" id="secret2" th:field="*{q11_A}">
-            <label for="secret2">We should share everything with our partner</label><br>
-            <input type="radio" name="secret" value="maybe" id="secret3" th:field="*{q11_A}">
-            <label for="secret3">I go with the flow</label><br>
-            <input type="radio" name="secret" value="others" id="secret4" th:field="*{q11_A}">
-            <label for="secret4">Depends on the stories/partners</label><br><br>
 
+            <label for="secret">13. Would you rather have a secret life behind your partner's back?</label><br>
+            <input type="radio" th:field="*{secret}" value="yes" id="secret1">
+            <label for="secret1">A secret makes a woman, woman </label><br>
+            <input type="radio" th:field="*{secret}" value="no" id="secret2">
+            <label for="secret2">We should share everything with our partner</label><br>
+            <input type="radio" th:field="*{secret}" value="maybe" id="secret3">
+            <label for="secret3">I go with the flow</label><br>
+            <input type="radio" th:field="*{secret}" value="others" id="secret4">
+            <label for="secret4">Depends on the stories/partners</label><br><br>-->
+            <label>1. What is your favorite season?</label><br>
+            <input type="radio" th:field="*{q1_A}" value="Spring"/>Spring
+            <br>
+            <input type="radio" th:field="*{q1_A}" value="Summer"/>Summer
+            <br>
+            <input type="radio" th:field="*{q1_A}" value="Fall"/>fall
+            <br>
+            <input type="radio" th:field="*{q1_A}" value="Winter"/>Winter
+            <br><br>
+
+            <label>2. What is your favorite subject?</label><br>
+            <input type="radio" th:field="*{q2_A}" value="Math"/>Math<br>
+           <input type="radio" th:field="*{q2_A}" value="English"/>English<br>
+            <input type="radio" th:field="*{q2_A}" value="Science"/>Science<br>
+            <input type="radio" th:field="*{q2_A}" value="History"/>History<br>
+            <br><br>
+            <label>3. What is your gen z slang?</label><br>
+            <input type="radio" th:field="*{q3_A}" value="Bet"/>Bet<br>
+            <input type="radio" th:field="*{q3_A}" value="Nocap"/>Nocap<br>
+            <input type="radio" th:field="*{q3_A}" value="Hitsdifferent"/>Hitsdifferent<br>
+            <input type="radio" th:field="*{q3_A}" value="Vibing"/>Vibing<br>
+            <input type="radio" th:field="*{q3_A}" value="lowkeyhighkey"/>lowkeyhighkey<br>
+           <br><br>
+            <label>4. What is your favorite music genre?</label><br>
+            <input type="radio" th:field="*{q4_A}" value="Pop"/>Pop<br>
+            <input type="radio" th:field="*{q4_A}" value="Country"/>Country<br>
+            <input type="radio" th:field="*{q4_A}" value="Hip-Hop"/>Hip-Hop<br>
+            <input type="radio" th:field="*{q4_A}" value="Classical"/>Classical<br>
+            <br><br>
+            <label>5. What is your gen z slang?</label><br>
+            <input type="radio" th:field="*{q5_A}" value="instagram"/>instagram<br>
+            <input type="radio" th:field="*{q5_A}" value="tiktok"/>tiktok<br>
+            <input type="radio" th:field="*{q5_A}" value="facebook"/>facebook<br>
+            <input type="radio" th:field="*{q5_A}" value="twitter"/>twitter<br>
+            <input type="radio" th:field="*{q5_A}" value="snapchat"/>snapchat<br>
+            <input type="radio" th:field="*{q5_A}" value="linkedln"/>linkedln<br>
+            <br><br>
+            <label>6. What is your favorite movie genre?</label><br>
+            <input type="radio" th:field="*{q6_A}" value="Romance"/>Romance<br>
+            <input type="radio" th:field="*{q6_A}" value="Scifi"/>Scifi<br>
+            <input type="radio" th:field="*{q6_A}" value="Adventure"/>Adventure<br>
+            <input type="radio" th:field="*{q6_A}" value="Anime"/>Anime<br>
+            <input type="radio" th:field="*{q6_A}" value="Comedy"/>Comedy<br>
+            <input type="radio" th:field="*{q6_A}" value="Horror"/>Horror<br>
+            <br><br>
+            <label>7. What is your favorite social media platform?</label><br>
+            <input type="radio" th:field="*{q7_A}" value="zeroten"/>0 - 10%<br>
+            <input type="radio" th:field="*{q7_A}" value="twentyforty"/>20 - 40%<br>
+            <input type="radio" th:field="*{q7_A}" value="fifty"/>50%<br>
+            <input type="radio" th:field="*{q7_A}" value="sixtyseventy"/>60 - 70%<br>
+            <input type="radio" th:field="*{q7_A}" value="eightyhundred"/>80- 100%<br>
+
+            <br><br>
+            <label>8. When is your bedtime (choose the one that is closest)?</label><br>
+            <input type="radio" th:field="*{q8_A}" value="nineten"/>9pm - 10pm<br>
+            <input type="radio" th:field="*{q8_A}" value="eleventwelve"/>11pm - 12pm<br>
+            <input type="radio" th:field="*{q8_A}" value="onethree"/>1pm - 3 pm<br>
+            <input type="radio" th:field="*{q8_A}" value="foursix"/>4pm - 6 pm<br>
+            <input type="radio" th:field="*{q8_A}" value="aftersunrise"/>aftersunrise<br>
+            <br><br>
+            <label>9. What is your favorite social media platform?</label><br>
+            <input type="radio" th:field="*{q9_A}" value="Yes, ALL THE WAY"/>Yes, ALL THE WAY<br>
+            <input type="radio" th:field="*{q9_A}" value="No I don’t like delaying work till the last minute"/>No I don’t like delaying work till the last minute<br>
+            <input type="radio" th:field="*{q9_A}" value="Sometimes"/>Sometimes<br>
+            <input type="radio" th:field="*{q9_A}" value="Often"/>Often<br>
+            <input type="radio" th:field="*{q9_A}" value="Not really"/>Not really<br>
+            <br><br>
+            <label>10. Are you a dog person or a cat person? </label><br>
+            <input type="radio" th:field="*{q10_A}" value="Dog-person"/>Dog-person<br>
+            <input type="radio" th:field="*{q10_A}" value="Cat-person"/>Cat-person<br>
+            <input type="radio" th:field="*{q10_A}" value="Both"/>Both<br>
+            <input type="radio" th:field="*{q10_A}" value="Others"/>Others<br>
+            <input type="radio" th:field="*{q10_A}" value="I DON'T LIKE ANIMALS AT ALL!"/>I DON'T LIKE ANIMALS AT ALL!<br>
+            <br><br>
+            <label>11. Would you like to have a physically attractive body or a sexy big brain? </label><br>
+            <input type="radio" th:field="*{q11_A}" value="Hot Body honey"/>Hot Body honey<br>
+            <input type="radio" th:field="*{q11_A}" value="Big Brain"/>Big Brain<br>
+            <input type="radio" th:field="*{q11_A}" value="BOTH, of course"/>BOTH, of course<br>
+            <input type="radio" th:field="*{q11_A}" value="Whatever"/>Whatever<br>
+
+            <br><br>
+            <label>12. Would you rather your partner be rich and cocky or broke and a sweetheart?</label><br>
+            <input type="radio" th:field="*{q12_A}" value="RICH I only care about being a rich wife/husband"/>RICH I only care about being a rich wife/husband<br>
+            <input type="radio" th:field="*{q12_A}" value="I just want someone to care about ME"/>I just want someone to care about ME<br>
+            <input type="radio" th:field="*{q12_A}" value="Why can't I get both?"/>Why can't I get both?<br>
+            <br><br>
+            <label>13. Would you rather have a secret life behind your partner's back?</label><br>
+            <input type="radio" th:field="*{q13_A}" value="A secret makes a woman, woman "/>A secret makes a woman, woman <br>
+            <input type="radio" th:field="*{q13_A}" value="We should share everything with our partner"/>We should share everything with our partner<br>
+            <input type="radio" th:field="*{q13_A}" value="I go with the flow"/>I go with the flow<br>
+            <input type="radio" th:field="*{q13_A}" value="Depends on the stories/partners"/>Depends on the stories/partners<br>
+             <br><br>
             <div>
                 <button type="submit" id="question">Submit!!</button>
             </div>
