@@ -1,88 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="https//www.thymeleaf.org">
 <head>
+    <title> CWRU Dating Sign-Up From</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="css/stylesheet2.css"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' media="screen" />
-    <script type="text/javascript" src="JavaScript/feature.js"> </script>
-    <script src="https://unpkg.com/vue@2.1.6/dist/vue.js"></script>
-    <script  src="https://unpkg.com/vue-router@2.1.1/dist/vue-router.js"></script>
+    <script type="text/javascript" src="index.js"> </script>
 <!-- //web font -->
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>CWRU Dating Sign-Up From</h1>
-  </header>
-  
-  <div id="app" class="signup">
-    <transition name="fade" mode="out-in">
-      <component :is="compname" @change_comp="swapcomp($event)"></component>
-    </transition>
-  </div>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>CWRU Dating Sign-Up Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form th:action="@{/process_register}" action="accountInsert.php" method="post" th:object="${account}">
 
-      <form th:action="@{/process_register}" method="post" th:object="${account}"> 
-        <div class = "form-group">
-          <label for="username"> Username: </label>
-		  <input type="text" id="username" name="username"  th:field="*{username}" required>
-        </div>
-        <div class="form-group">
-          <label for="firstName"> First Name: </label>
-          <input type="text" id="firstName" name ="firstName"  th:field="*{firstName}" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="lastName"> Last Name: </label>
-          <input type="text" id= "lastName" name="lastName" th:field="*{lastName}" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="email"> Case ID</label>
-          <input type="text" id ="email" name="email" th:field="*{email}" v-model="email" required>
-          <span v-if="email.length > 1">{{ email_msg }}</span>
-        </div>
- 
-        
-        <div class="form-group">
-          <label for="psw1">Password <span id="characters">(6 or more characters required)</span></label>
-          <input type="psw1" id="pass" name="password" autocomplete="current-password" minlength ="8" th:field="*{password}" v-model="password1" required >
-          <span v-show="msg1">{{ pwd1_msg }}</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="psw2">Repeat Password</label>
-          <input id = "psw2" type="password" v-model="password2" required>
-          <span v-show="msg2">{{ pwd2_msg }}</span>
-        </div>
-        
-        <div class="form-group">
-          <button :class="{active: disable_btn}":disabled="disable_btn" @click.prevent="on_signup()">Sign Up</button>
-          <a href="#0" @click="show_terms()">terms & conditions</a>
-        </div>
-      </form>
-  <br>
-  <p> Have an Account? <a href="login">Login Now!</a> </p>
-  
-    <template id="results">
-      <div class="results">
-        <h4>FORM SUBMIT SUCCESSFUL</h4>
-        <p>Thank you for signing up with us</p>
-        <button @click="back_to_signup()">Continue</button>
-      </div>
-    </template>
-  
-    <template id="terms">
-      <div class="terms">
-        <h4>TERMS & CONDITIONS</h4>
-        <p>A list of terms, conditions, and policies.</p>
-        <button @click="back_to_signup()">Back</button>
-      </div>
-    </template>
-  
-</div>
+                    <div>
+                        <label for="username"> Username: </label>
+					    <input type="text" id="username" name="username" placeholder="Username" th:field="*{username}" required>
+                    </div>
+                    <div>
+                        <label for="firstName"> First Name: </label>
+                        <input type="text" id="firstName" name ="firstName" placeholder="First Name" th:field="*{firstName}" required>
+                    </div>
+
+                    <div>
+                        <label for="lastName"> Last Name: </label>
+                        <input type="text" id= "lastName" name="lastName" placeholder="Last Name" th:field="*{lastName}" required>
+                    </div>
+
+                    <div>
+                        <label for="email"> Case ID:</label>
+                        <input type="email" id ="email" name="email"placeholder = "@case.edu" pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+[\S]@(case.edu)" th:field="*{email}"  required>
+                    </div>
+                    <div>
+                        <label for="password"> Password: </label>
+                        <input type="password" id="pass" name="password" placeholder ="Password" autocomplete="current-password" minlength ="8" th:field="*{password}" required= > 
+                        <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+
+                    </div>
+                    <div>
+                        <label for="re-password"> Repeated Password: </label>
+                        <input id = "repassword" type="password" placeholder="Repeated Password" required="">
+                        <i class="far fa-eye" id="toggleRePassword" style="margin-left: -30px; cursor: pointer;"></i>
+
+                    </div>
+					
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+						<div class="clear"> </div>
+					</div>
+					<button type="submit" id="signup">Sign Up</button>
+				</form>
+				<p> Have an Account? <a href="login">Login Now!</a> </p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
