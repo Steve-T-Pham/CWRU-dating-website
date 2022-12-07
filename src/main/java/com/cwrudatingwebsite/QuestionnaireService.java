@@ -27,7 +27,6 @@ public class QuestionnaireService {
             count=0;
             if ((questionnaire.gender.equals("Male") && questionnaireComp.gender.equals("Female")) || (questionnaire.gender.equals("Female") && questionnaireComp.gender.equals("Male"))) {
 
-
                 if (questionnaireComp.getQ1_A().equals(questionnaire.getQ1_A()))
                     count++;
                 if (questionnaireComp.getQ2_A().equals(questionnaire.getQ2_A()))
@@ -59,8 +58,6 @@ public class QuestionnaireService {
               matched.setMatchCount(count);
               matchedRepository.save(matched);
              System.out.println(questionnaireComp.username+"    "+questionnaire.username+"   "+count+"  "+questionnaire.gender);
-
-
 
 
             } else {
