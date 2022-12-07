@@ -106,7 +106,7 @@ public class Cwrudating {
  
      @PostMapping("/process_questionnaire")
      public ModelAndView processQuestionnaire(@ModelAttribute personalQuestionnaire personalQuestionnaire){
-         return new ModelAndView("prefQuestionnaire");
+         return new ModelAndView("test");
      }
     
      

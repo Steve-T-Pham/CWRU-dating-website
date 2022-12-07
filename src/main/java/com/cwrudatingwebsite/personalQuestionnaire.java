@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,10 +14,12 @@ import javax.persistence.Table;
 public class personalQuestionnaire { //all the question objects in this questionnaire
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     Long id;
-    @Column(nullable = false, unique = true, length = 45)
-    String username = null; //username
+
+    @ManyToOne
+    Account username; //username
+
+
     @Column(nullable = false, length = 45)
     String gender= null; //user's gender
 
@@ -55,7 +58,7 @@ public class personalQuestionnaire { //all the question objects in this question
 
   
 
-    public personalQuestionnaire(String username_1, String g, String one, String two, String three, String four, String five, String six, String seven, String eight, String nine, String ten, String eleven)
+    public personalQuestionnaire(Account username_1, String g, String one, String two, String three, String four, String five, String six, String seven, String eight, String nine, String ten, String eleven)
     {
         //set each question to corresponding question that will have the stored answer to a question object
       
@@ -98,10 +101,10 @@ public class personalQuestionnaire { //all the question objects in this question
     public void setID(Long id){
         this.id = id;
     }
-    public String getUsername(){
+    public Account getUsername(){
         return username;
     }
-    public void setUsername(String newUsername){
+    public void setUsername(Account newUsername){
         this.username = newUsername;
     }
     public String getGender(){
@@ -178,7 +181,6 @@ public class personalQuestionnaire { //all the question objects in this question
     public void setQ11_A(String eleven_A){
         this.q11_A = eleven_A;
     }
-    
   
    
 }
