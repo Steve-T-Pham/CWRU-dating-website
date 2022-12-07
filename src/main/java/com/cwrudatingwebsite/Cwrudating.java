@@ -29,6 +29,9 @@ public class Cwrudating {
     @Autowired
     private AccountRepository repo;
 
+    @Autowired
+    private MatchesRepository repo2;
+
     @GetMapping("/login")
     public ModelAndView firstPage(){
         return new ModelAndView("login");
@@ -61,12 +64,6 @@ public class Cwrudating {
         return new ModelAndView("login");
     }
 
-     //renders the matches page
-     @RequestMapping("/matches")
-     public ModelAndView sixthPage(){
-         return new ModelAndView("matches");
-     }
-
     @RequestMapping("/prefQuestionnaire")
     public ModelAndView hiddenPage(Model model){
         prefQuestionnaire prefQuestionnaire = new prefQuestionnaire();
@@ -74,9 +71,9 @@ public class Cwrudating {
         return new ModelAndView("prefQuestionnaire");
     }
 
-    @PostMapping("/process_prefquestionnaire")
+    @PostMapping("/process_prefQuestionnaire")
     public ModelAndView processPrefQuestionnaire(@ModelAttribute prefQuestionnaire prefQuestionnaire){
-        return new ModelAndView("matches");
+        return new ModelAndView("process_prefQuestionnaire");
     }
     
      //renders the questionnaire page

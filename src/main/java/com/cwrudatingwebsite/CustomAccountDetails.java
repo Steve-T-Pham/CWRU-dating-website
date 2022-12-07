@@ -12,7 +12,7 @@ public class CustomAccountDetails implements UserDetails {
     public CustomAccountDetails(Account account){
         this.account = account;
     }
-
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
