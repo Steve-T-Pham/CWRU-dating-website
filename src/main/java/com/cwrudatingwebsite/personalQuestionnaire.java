@@ -6,8 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.FetchType;
 
 @Entity
 @Table(name = "personalQuestionnaire")
@@ -16,44 +19,48 @@ public class personalQuestionnaire { //all the question objects in this question
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+        @JoinColumn(name="username", referencedColumnName="username"),
+        @JoinColumn(name="account_id", referencedColumnName="id")
+    })
     Account username; //username
 
 
-    @Column(nullable = false, length = 45)
-    String gender= null; //user's gender
+    @Column(nullable = true, length = 45)
+    String gender = null; //user's gender
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q1_A = null;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q2_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q3_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q4_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q5_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q6_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q7_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q8_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q9_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q10_A;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true, length = 45)
     String q11_A;
 
   

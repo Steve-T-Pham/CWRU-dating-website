@@ -29,6 +29,9 @@ public class Cwrudating {
     @Autowired
     private AccountRepository repo;
 
+    @Autowired
+    private personalQuestionnaireRepository qRepo;
+
     @GetMapping("/login")
     public ModelAndView firstPage(){
         return new ModelAndView("login");
@@ -79,11 +82,36 @@ public class Cwrudating {
         return new ModelAndView("matches");
     }
     
-     //renders the questionnaire page
-     @RequestMapping("/questionnaire")
-     public ModelAndView thirdPage(Model model){
-         personalQuestionnaire personalQuestionnaire = new personalQuestionnaire();
-         model.addAttribute("personalQuestionnaire", personalQuestionnaire);
+    //renders the questionnaire page
+    @GetMapping("/questionnaire")
+    public ModelAndView thirdPage(Model model){
+
+        //get current logged in user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Account account = repo.findByUsername(username);
+
+        personalQuestionnaire questionnaire = qRepo.findByUsername(account);
+
+        if (questionnaire != null){
+            model.addAttribute("gender", questionnaire.getGender());
+            model.addAttribute("q1_A", questionnaire.getQ1_A());
+            model.addAttribute("q1_A", questionnaire.getQ2_A());
+            model.addAttribute("q1_A", questionnaire.getQ3_A());
+            model.addAttribute("q1_A", questionnaire.getQ4_A());
+            model.addAttribute("q1_A", questionnaire.getQ5_A());
+            model.addAttribute("q1_A", questionnaire.getQ6_A());
+            model.addAttribute("q1_A", questionnaire.getQ7_A());
+            model.addAttribute("q1_A", questionnaire.getQ8_A());
+            model.addAttribute("q1_A", questionnaire.getQ9_A());
+            model.addAttribute("q1_A", questionnaire.getQ10_A());
+            model.addAttribute("q1_A", questionnaire.getQ11_A());
+            model.addAttribute("existingQuestionnaire", questionnaire);
+        }
+        else{
+            personalQuestionnaire personalQuestionnaire = new personalQuestionnaire();
+            model.addAttribute("newQuestionnaire", personalQuestionnaire);
+        }
          List<String> listMajor = Arrays.asList("Accountancy", "Accounting", "Architect", "Aerospace Engineering", 
          "Ancient Near Eastern and Egyptian Studies", "Anesthesia", "Anthropology", "Applied Mathematics", 
          "Art Education", "Art History and Museum Studies", "Art History", "Asian Studies", "Astronomy", 
@@ -101,13 +129,57 @@ public class Cwrudating {
          "Systems and Control Engineering", "Systems Biology", "Teacher Education", "Theater Arts", "Women's and Gender Studies", 
          "World Literature", "Others");
         model.addAttribute("listMajor", listMajor);
-         return new ModelAndView("questionnaire");
-     }
+
+        List<String> genders = Arrays.asList("Male", "Female", "Transwoman", "Transman", "Non-binary");
+        model.addAttribute("genders", genders);
+        return new ModelAndView("questionnaire");
+    }
  
-     @PostMapping("/process_questionnaire")
-     public ModelAndView processQuestionnaire(@ModelAttribute personalQuestionnaire personalQuestionnaire){
-         return new ModelAndView("test");
-     }
+    @RequestMapping(value = "/process_questionnaire", method = RequestMethod.POST) 
+    public ModelAndView processQuestionnaire(@RequestParam Map<String, String> radioOptions, @RequestParam String gender){
+
+        //get current logged in user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Account account = repo.findByUsername(username);
+        personalQuestionnaire personalQuestionnaire = qRepo.findByUsername(account);
+
+
+        //sets a questionnaire repository binded to the account with the same username
+        personalQuestionnaire.setUsername(account);
+        personalQuestionnaire.setGender(gender);
+
+        //map over each individual radio option
+        for (String question : radioOptions.keySet()){
+            String answer = radioOptions.get(question);
+            switch(question) {
+                case "q1_A":
+                    personalQuestionnaire.setQ1_A(answer);
+                case "q2_A":
+                    personalQuestionnaire.setQ2_A(answer);
+                case "q3_A":
+                    personalQuestionnaire.setQ3_A(answer);
+                case "q4_A":
+                    personalQuestionnaire.setQ4_A(answer);
+                case "q5_A":
+                    personalQuestionnaire.setQ5_A(answer);
+                case "q6_A":
+                    personalQuestionnaire.setQ6_A(answer);
+                case "q7_A":
+                    personalQuestionnaire.setQ7_A(answer);
+                case "q8_A":
+                    personalQuestionnaire.setQ8_A(answer);
+                case "q9_A":
+                    personalQuestionnaire.setQ9_A(answer);
+                case "q10_A":
+                    personalQuestionnaire.setQ10_A(answer);
+                case "q11_A":
+                    personalQuestionnaire.setQ11_A(answer);
+                }
+        }
+        qRepo.save(personalQuestionnaire);
+        return new ModelAndView("test");
+    }
     
      
     //renders dashboard page
