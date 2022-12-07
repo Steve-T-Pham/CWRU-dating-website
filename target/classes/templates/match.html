@@ -23,12 +23,15 @@
     <thead>
     <tr>
         <th style="width: 100px;">Username</th>
+        <th style="width: 100px;">Email</th>
+        <th style="width: 100px;">Send Email</th>
     </tr>
     </thead>
     <tbody>
     <tr style="width: 100px;" th:each="person : ${MatchedUsernames}">
-        <td th:text="${person}"/>
-
+        <td th:text="${person.username}"/></td>
+        <td th:text="${person.email}"></td>
+        <td><button type="button" class="btn btn-primary" onclick="sendEmail(this)">Send Email</button></td>
     </tr>
     </tbody>
 </table>
