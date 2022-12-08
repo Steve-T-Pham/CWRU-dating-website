@@ -163,7 +163,6 @@ public class Cwrudating {
             System.out.println("The current user logged in is "+currentUserName);
         }
         return currentUserName;
-
     }
 
 }
