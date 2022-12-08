@@ -17,21 +17,51 @@
         </div>
     </div>
 
-<h1 th:text="'Please find your matches below'">Please find your matches below</h1>
+<span th:text="'Please find your matches below'">Please find your matches below</span>
+<span id="username" th:text="${#request.userPrincipal.principal.username}"></span>
+<span id="current-email" th:text="${#request.userPrincipal.principal.email}"></span>
+<br><br>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">Username</th>
-        <th style="width: 100px;">Email</th>
-        <th style="width: 100px;">Send Email</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr style="width: 100px;" th:each="person : ${MatchedUsernames}">
-        <td th:text="${person.username}"/></td>
-        <td th:text="${person.email}"></td>
-        <td><button type="button" class="btn btn-primary" onclick="sendEmail(this)">Send Email</button></td>
+<!-- Add the emailJS library to the page -->
+<script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+
+<!-- Configure the emailJS library with your account details -->
+<script>
+    emailjs.init("");
+</script>
+
+<script th:inline="javascript">
+    function sendEmail(person) {
+        // Get the email address from the person object
+        var email = person.parentNode.parentNode.childNodes[1].textContent;
+
+        // Get username from div
+        var username = document.getElementById("username").textContent;
+    
+        // Get email from div
+        var sender = document.getElementById("current-email").textContent;
+
+
+        // Use the emailJS library to send the email, including the user's username in the message body
+        emailjs.send("", "", {to_email: email, subject: "Hello", message: "Hello, " + email + ", this is an email from CWRU Dating Website from: " + username + ", feel free to match and contact them at their email: " + sender +'!'});
+    }
+    </script>
+    
+    
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 100px;">Username</th>
+            <th style="width: 100px;">Email</th>
+            <th style="width: 100px;">Send Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="width: 100px;" th:each="person : ${MatchedUsernames}">
+            <td th:text="${person.username}"/></td>
+            <td th:text="${person.email}"></td>
+            <td><button type="button" class="btn btn-primary" onclick='sendEmail(this)'>Send Email</button></td>
+
     </tr>
     </tbody>
 </table>
