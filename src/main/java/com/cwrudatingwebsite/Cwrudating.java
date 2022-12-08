@@ -34,12 +34,6 @@ public class Cwrudating {
     @Autowired
     private QuestionnaireService questionnaireService;
 
-<<<<<<< HEAD
-    @Autowired
-    private MatchesRepository repo2;
-
-    @GetMapping("/login")
-=======
 
     private List<String> usernameMatchList;
 
@@ -52,7 +46,6 @@ public class Cwrudating {
 
     //renders login page
     @GetMapping("")
->>>>>>> ce842d8169d0314bfd712a85a5a9618376c91452
     public ModelAndView firstPage(){
         return new ModelAndView("login");
     }
@@ -76,21 +69,6 @@ public class Cwrudating {
         return new ModelAndView("login");
     }
 
-<<<<<<< HEAD
-    @RequestMapping("/prefQuestionnaire")
-    public ModelAndView hiddenPage(Model model){
-        prefQuestionnaire prefQuestionnaire = new prefQuestionnaire();
-        model.addAttribute("prefQuestionnaire", prefQuestionnaire);
-        return new ModelAndView("prefQuestionnaire");
-    }
-
-    @PostMapping("/process_prefQuestionnaire")
-    public ModelAndView processPrefQuestionnaire(@ModelAttribute prefQuestionnaire prefQuestionnaire){
-        return new ModelAndView("process_prefQuestionnaire");
-    }
-    
-=======
->>>>>>> ce842d8169d0314bfd712a85a5a9618376c91452
      //renders the questionnaire page
      @RequestMapping("/questionnaire")
      public ModelAndView thirdPage(Model model,@ModelAttribute Questionnaire questionnaire) throws SQLException {
