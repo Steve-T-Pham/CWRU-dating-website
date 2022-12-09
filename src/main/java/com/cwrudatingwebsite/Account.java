@@ -1,6 +1,5 @@
 package com.cwrudatingwebsite;
 
-
 import java.io.Serializable;
 
 import javax.persistence.Column;

@@ -1,9 +1,9 @@
-package com.cwrudatingwebsite;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.cwrudatingwebsite.Account;
+import com.cwrudatingwebsite.CustomAccountDetails;
 
 class CustomAccountDetailsTest {
     Account account=new Account("Username","password","username@case.edu","Username","Reddy");
@@ -12,7 +12,7 @@ class CustomAccountDetailsTest {
     public void testCustomAccountDetails()
     {
         CustomAccountDetails customAccountDetails=new CustomAccountDetails(account);
-        account.setId(1L);
+        account.setId(1);
         Assertions.assertEquals(customAccountDetails.getUsername(),"Username");
         Assertions.assertEquals(customAccountDetails.getPassword(),"password");
         Assertions.assertEquals(customAccountDetails.getFullName(),"Username Reddy");

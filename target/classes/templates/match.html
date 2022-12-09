@@ -27,7 +27,7 @@
 
 <!-- Configure the emailJS library with your account details -->
 <script>
-    emailjs.init("ibPoo7xQZJaYYqptZ");
+    emailjs.init("");
 </script>
 
 <script th:inline="javascript">
@@ -43,7 +43,7 @@
 
 
         // Use the emailJS library to send the email, including the user's username in the message body
-        emailjs.send("service_5bitwd1", "template_b3z1eal", {to_email: email, subject: "Hello", message: "Hello, " + email + ", this is an email from CWRU Dating Website from: " + username + ", feel free to match and contact them at their email: " + sender +'!'});
+        emailjs.send("", "", {to_email: email, subject: "Hello", message: "Hello, " + email + ", this is an email from CWRU Dating Website from: " + username + ", feel free to match and contact them at their email: " + sender +'!'});
     }
     </script>
     

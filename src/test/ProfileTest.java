@@ -1,9 +1,9 @@
-package com.cwrudatingwebsite;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.beans.Transient;
-
 import org.junit.jupiter.api.Test;
+
+import com.cwrudatingwebsite.Profile;
 
 
 class ProfileTest {
@@ -13,6 +13,8 @@ class ProfileTest {
         Profile a = new Profile("I like cats.");
         assertEquals("I like cats.", a.getBio());
     }
+    
+    @Test
     void setBioTest(){
         Profile b = new Profile("I like dogs.");
         assertEquals("I like dogs.", b.getBio());

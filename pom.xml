@@ -163,11 +163,17 @@
 
 		</plugins>
 
-	<build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/test</testSourceDirectory>
-    ...
-  	</build>
+  <testResources>
+    <testResource>
+      <directory>src/test</directory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </testResource>
+  </testResources>
+
 	</build>
 	
 </project>

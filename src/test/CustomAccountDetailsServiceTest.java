@@ -1,4 +1,3 @@
-package com.cwrudatingwebsite;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -7,7 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.cwrudatingwebsite.Account;
+import com.cwrudatingwebsite.AccountRepository;
+import com.cwrudatingwebsite.CustomAccountDetailsService;
+
 import static org.mockito.Mockito.doReturn;
 @SpringBootTest
 class CustomAccountDetailsServiceTest {
