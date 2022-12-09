@@ -12,7 +12,7 @@ import java.io.FileInputStream;
 public class TableDatabase {
     private final String url = "jdbc:postgresql://localhost/CWRU Dating Website";
     private final String user = "postgres";
-    private final String password = "generalPho!";
+    private final String password = "root";
     private ResultSet resultSet = null;
 
     public TableDatabase() {
@@ -229,6 +229,7 @@ public class TableDatabase {
         }
         return "No such field exists";
     }
+
 /* 
     public void setImage(String obj, Account account) {
 

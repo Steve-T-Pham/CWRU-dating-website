@@ -12,12 +12,16 @@ public class CustomAccountDetails implements UserDetails {
     public CustomAccountDetails(Account account){
         this.account = account;
     }
-
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
 
+    public String getBio(){
+        return account.getBio();
+    }
+    
     @Override
     public String getPassword() {
         return account.getPassword();

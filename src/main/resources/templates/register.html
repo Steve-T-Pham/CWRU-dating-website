@@ -49,7 +49,7 @@
         
         <div class="form-group">
           <label for="psw1">Password <span id="characters">(6 or more characters required)</span></label>
-          <input type="psw1" id="pass" name="password" autocomplete="current-password" minlength ="8" th:field="*{password}" v-model="password1" required >
+          <input type="password" id="pass" name="password" autocomplete="current-password" minlength ="8" th:field="*{password}" v-model="password1" required >
           <span v-show="msg1">{{ pwd1_msg }}</span>
         </div>
         
