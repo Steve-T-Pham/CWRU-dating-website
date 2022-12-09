@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -152,6 +153,7 @@ public class Cwrudating {
     @GetMapping("/profile")
     public ModelAndView fifthPage(@ModelAttribute Account account, Model model){
         model.addAttribute("account", account);
+        model.addAttribute("bio", account.getBio());
         return new ModelAndView("profile");
     }
 
@@ -163,6 +165,20 @@ public class Cwrudating {
             System.out.println("The current user logged in is "+currentUserName);
         }
         return currentUserName;
+    }
+
+    @RequestMapping(value = "/update-bio", method = RequestMethod.POST) 
+    public String updateBio(@RequestParam("bio") String bio, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        // Get the current user's account
+        Account account = repo.findByUsername(username);
+        model.addAttribute("account", account);
+        // Update the bio
+        account.setBio(bio);
+        // Save the updated account
+        repo.save(account);
+        return "profile";
     }
 
 }

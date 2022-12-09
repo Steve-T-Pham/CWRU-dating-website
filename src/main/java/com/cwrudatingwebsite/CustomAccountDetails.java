@@ -18,6 +18,10 @@ public class CustomAccountDetails implements UserDetails {
         return null;
     }
 
+    public String getBio(){
+        return account.getBio();
+    }
+    
     @Override
     public String getPassword() {
         return account.getPassword();

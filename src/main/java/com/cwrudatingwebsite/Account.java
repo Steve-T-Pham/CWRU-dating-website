@@ -37,6 +37,9 @@ public class Account {
     @Column(nullable = true, length = 15)
     String role = "regular";
 
+    @Column(nullable = true, length = 255)
+    String bio = null;
+
     //String first_name, String last_name
     public Account(String username, String password, String email, String first_name, String last_name)  {
         this.setUsername(username);
@@ -44,6 +47,7 @@ public class Account {
         this.setEmail(email);
         this.setFirstName(first_name);
         this.setLastName(last_name);
+        this.setBio(null);
     }
 
     public Account(){
@@ -113,6 +117,14 @@ public class Account {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getBio(){
+        return bio;
+    }
+
+    public void setBio(String bio){
+        this.bio = bio;
     }
 
 }
