@@ -1,4 +1,4 @@
-package com.cwrudatingwebsite.cwrudating;
+package com.cwrudatingwebsite;
 
 import static org.assertj.core.api.Assertions.assertThat;
  
