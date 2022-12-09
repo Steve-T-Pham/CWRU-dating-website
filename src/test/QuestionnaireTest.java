@@ -15,7 +15,7 @@ class QuestionnaireTest {
     @Test
     public void getUsernameTest(){
         //Expected variable , actual variable , compare
-        //hi.setUsername("wendy");
+        hi.setUsername("wendy");
         hi.setQ1_A("Spring");
         hi.setQ2_A("bet");
         String expected = "wendy";
