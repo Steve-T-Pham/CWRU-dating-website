@@ -169,8 +169,7 @@ public class Cwrudating {
 
     @RequestMapping(value = "/update-bio", method = RequestMethod.POST) 
     public String updateBio(@RequestParam("bio") String bio, Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
+        String username=getCurrentUser();
         // Get the current user's account
         Account account = repo.findByUsername(username);
         model.addAttribute("account", account);

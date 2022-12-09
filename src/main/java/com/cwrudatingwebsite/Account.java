@@ -21,7 +21,7 @@ public class Account {
     @Column(nullable = false, unique = true, length = 45)
     String username = null;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     String password = null;
 
     @Column(nullable = false, length = 45)
