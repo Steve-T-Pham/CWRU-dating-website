@@ -151,7 +151,11 @@ public class Cwrudating {
 
     //renders profile page
     @GetMapping("/profile")
-    public ModelAndView fifthPage(@ModelAttribute Account account, Model model){
+    public ModelAndView fifthPage(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Account account = repo.findByUsername(username);
+
         model.addAttribute("account", account);
         model.addAttribute("bio", account.getBio());
         return new ModelAndView("profile");

@@ -310,3 +310,35 @@ a{
 .loggedin-username{
     font-size: 15px;
 }
+
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-matches{
+    font-family: "Poppins";
+    margin: 25px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+  table {
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:6px;
+}
+
+td, th {
+    border-left:solid black 1px;
+    border-top:solid black 1px;
+}
+
+th {
+    border-top: none;
+}
+
+td:first-child, th:first-child {
+     border-left: none;
+}

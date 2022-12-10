@@ -33,22 +33,22 @@
         <p><label for="file" style="cursor: pointer" id="upload-img">Upload Image 🖼️</label></p>
         <div class="profile-account-info">
             <div class="profile-username">
-                Username:
+                <strong>Username:</strong>
             </div>
             <div th:text="${#request.userPrincipal.principal.username}"></div>
             <div class="profile-username">
-                Full Name:
+                <strong>Full Name:</strong>
             </div>
             <div th:text="${#request.userPrincipal.principal.fullName}"></div>
             <div class="profile-username"> 
-                Bio:
+                Bio: <i>(give a little info to the other people who match with you!)</i>
             </div>
 
             <div th:text="${account.bio}"></div>
 
             <form th:action="@{/update-bio}" th:object="${account}" method="POST"> 
-                <input type="text" th:field="*{bio}" placeholder="Enter text..." value=""/>
-                <button type="submit">Update</button>
+                <input type="text" th:field="*{bio}" placeholder="Enter text..." value="" class="input"/>
+                <button type="submit" class="button">Update Bio</button>
             </form>
         </div>
     </div>
