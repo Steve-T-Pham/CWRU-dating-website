@@ -1,26 +1,28 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.cwrudatingwebsite.Account;
 import com.cwrudatingwebsite.AccountRepository;
 
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = Replace.NONE)
-@Rollback(false)
+
+@ContextConfiguration
 public class AccountRepositoryTest {
 
 	@Autowired
 	private TestEntityManager entityManager;
 	
-	@Autowired
-	private AccountRepository repo;
+	@MockBean
+	private AccountRepository repo = Mockito.mock(AccountRepository.class);
 
 	@Test
 	public void testCreateAccount() {
@@ -35,6 +37,6 @@ public class AccountRepositoryTest {
 		 
 		Account existUser = entityManager.find(Account.class, savedUser.getId());
 		 
-		assertThat(testAccount.getEmail()).isEqualTo(existUser.getEmail());
+		assertThat(testAccount.getEmail()).isEqualTo(savedUser.getEmail());
 	}
 }
