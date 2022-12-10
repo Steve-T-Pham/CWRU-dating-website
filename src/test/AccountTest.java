@@ -38,9 +38,36 @@ public class AccountTest {
         String actual = aAccount.getEmail();
     
         assertEquals(expected,actual);
-
     }
-     
+    
+    @Test
+    public void testGetFirstName(){
+        //Expected variable , actual variable , compare
+        aAccount.setFirstName("suchi");
+        String expected = "suchi";
+        String actual = aAccount.getFirstName();
+    
+        assertEquals(expected,actual);
+    }
 
+    @Test
+    public void testGetLasttName(){
+        //Expected variable , actual variable , compare
+        aAccount.setLastName("lname");
+        String expected = "lname";
+        String actual = aAccount.getLastName();
+    
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testGetBio(){
+        //Expected variable , actual variable , compare
+        aAccount.setBio("I love cats");
+        String expected = "I love cats";
+        String actual = aAccount.getBio();
+    
+        assertEquals(expected,actual);
+    }
 
 }
